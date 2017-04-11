@@ -30,14 +30,14 @@
     width: 6400px;
     height: 150px;
     animation:
-      wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-    transform: translate3d(0, 0, 0);
+      wave 7s cubic-bezier(.36,.45,.63,.53) infinite;
+    transform: translate3d(0,0,0);
   }
 
   .wave:nth-of-type(2) {
     top: -125px;
     animation:
-      wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -3s infinite,
+      wave 10s cubic-bezier(.36,.45,.63,.53) -3s infinite,
       swell 7s ease -3s infinite;
     opacity: 1;
   }
@@ -65,11 +65,11 @@
   /* http://fontm.com/scratch-font/ */
   @font-face {
     font-family: "Scratch";
-    src: url("scratch/Basic/Scratch Basic.ttf");
+    src: url("scratch/basic/Scratch Basic.ttf");
   }
   @font-face {
     font-family: "Scratch-Detail";
-    src: url("scratch/Detail/Scratch Detail.ttf");
+    src: url("scratch/detail/Scratch Detail.ttf");
   }
 
   #content {
@@ -95,8 +95,8 @@
     left: 0;
     right: 0;
     content: attr(text);
-    font-family: 'Scratch-Detail';
-    color: rgba(1,169,206,0.5);
+    font-family: 'Scratch-Detail', Helvetica;
+    color: rgba(1,169,206,.5);
   }
   #logo {
     margin: auto;

@@ -7,7 +7,7 @@ const http = require('http')
 const port = process.env.PORT || 8000
 
 const app = express()
-app.use(express.static('dist'))
+app.use(express.static('static'))
 app.listen(port)
 
 console.log(`Listening on port ${port}.`)

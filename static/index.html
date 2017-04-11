@@ -6,59 +6,127 @@
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <title>996 Band - Homepage</title>
 <style>
-/* https://codepen.io/tedmcdo/pen/PqxKXg */
-html, body { height: 100%; }
-body {
-  background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, rgba(254,208,149,1) 100%);
-  overflow: hidden;
-}
-
-.ocean { 
-  height: 5%;
-  width:100%;
-  position:absolute;
-  bottom:0;
-  left:0;
-  background: #015871;
-}
-
-.wave {
-  background: url(http://tedmcdo.com/labs/wave.svg) repeat-x; 
-  position: absolute;
-  top: -198px;
-  width: 6400px;
-  height: 198px;
-  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
-  transform: translate3d(0, 0, 0);
-}
-
-.wave:nth-of-type(2) {
-  top: -175px;
-  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
-  opacity: 1;
-}
-
-@keyframes wave {
-  0% {
-    margin-left: 0;
+  /* https://codepen.io/tedmcdo/pen/PqxKXg */
+  html, body { height: 100%; }
+  body {
+    /*background: radial-gradient(ellipse at center, #333 0%, #333 35%, #000 100%);*/
+    background: #333;
+    overflow: hidden;
   }
-  100% {
-    margin-left: -1600px;
-  }
-}
 
-@keyframes swell {
-  0%, 100% {
-    transform: translate3d(0,-25px,0);
+  .ocean { 
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #333;
   }
-  50% {
-    transform: translate3d(0,5px,0);
+
+  .wave {
+    background: url(wave.svg) repeat-x; 
+    position: absolute;
+    top: -150px;
+    width: 6400px;
+    height: 150px;
+    animation:
+      wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
   }
-}
+
+  .wave:nth-of-type(2) {
+    top: -125px;
+    animation:
+      wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -3s infinite,
+      swell 7s ease -3s infinite;
+    opacity: 1;
+  }
+
+  @keyframes wave {
+    0% {
+      margin-left: 0;
+    }
+    100% {
+      margin-left: -1600px;
+    }
+  }
+
+  @keyframes swell {
+    0%, 100% {
+      transform: translate3d(0,-25px,0);
+    }
+    50% {
+      transform: translate3d(0,5px,0);
+    }
+  }
+</style>
+
+<style>
+  /* http://fontm.com/scratch-font/ */
+  @font-face {
+    font-family: "Scratch";
+    src: url("scratch/Basic/Scratch Basic.ttf");
+  }
+  @font-face {
+    font-family: "Scratch-Detail";
+    src: url("scratch/Detail/Scratch Detail.ttf");
+  }
+
+  #content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  /* https://www.webdesignerdepot.com/2014/06/how-to-get-started-with-layer-fonts-in-css/ */
+  #title {
+    font-family: 'Scratch', Helvetica;
+    font-weight: bold;
+    position: relative;
+    color: rgba(203,169,141,1);
+    font-size: 4em;
+    margin: 0;
+  }
+  #title::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    content: attr(text);
+    font-family: 'Scratch-Detail';
+    color: rgba(1,169,206,0.5);
+  }
+  #logo {
+    margin: auto;
+    display: block;
+    width: 240px;
+    margin: -20% auto;
+  }
+
+  @media (max-width: 450px) {
+    #logo { width: 320px; }
+  }
+
+  @media (min-width: 451px) and (max-width: 800px) {
+    #title { margin-bottom: 2rem; }
+    #logo { width: 320px; }
+  }
+
+  @media (min-width: 801px) {
+    #title { margin-bottom: 2rem; }
+    #logo { width: 480px; }
+  }
 </style>
 
 </head>
 <body>
+
+<div id="content">
+  <h1 id="title" text="996 BAND">996 BAND</h1>
+  <img id="logo" alt="Logo" title="Logo" src="996-white.png">
+</div>
 
 <div class="ocean">
   <div class="wave"></div>

@@ -1,0 +1,16 @@
+{
+  "name": "996.band",
+  "version": "1.0.0",
+  "description": "Homepage of 996 band",
+  "main": "index.js",
+  "scripts": {
+    "web": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jinjiang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}

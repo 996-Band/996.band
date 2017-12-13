@@ -1,67 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
 
 <meta charset="utf-8">
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-<title>996 Band - Homepage</title>
-<style>
-  /* https://codepen.io/tedmcdo/pen/PqxKXg */
-  html, body { height: 100%; }
-  body {
-    /*background: radial-gradient(ellipse at center, #333 0%, #333 35%, #000 100%);*/
-    background: #333;
-    overflow: hidden;
-  }
+<title>996 乐队</title>
 
-  .ocean { 
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 5%;
-    background: #333;
-  }
+<!-- #global -->
 
-  .wave {
-    background: url(wave.svg) repeat-x; 
-    position: absolute;
-    top: -150px;
-    width: 6400px;
-    height: 150px;
-    animation:
-      wave 7s cubic-bezier(.36,.45,.63,.53) infinite;
-    transform: translate3d(0,0,0);
-  }
-
-  .wave:nth-of-type(2) {
-    top: -125px;
-    animation:
-      wave 10s cubic-bezier(.36,.45,.63,.53) -3s infinite,
-      swell 7s ease -3s infinite;
-    opacity: 1;
-  }
-
-  @keyframes wave {
-    0% {
-      margin-left: 0;
-    }
-    100% {
-      margin-left: -1600px;
-    }
-  }
-
-  @keyframes swell {
-    0%, 100% {
-      transform: translate3d(0,-25px,0);
-    }
-    50% {
-      transform: translate3d(0,5px,0);
-    }
-  }
-</style>
-
-<style>
+<style id="global-style">
   /* http://fontm.com/scratch-font/ */
   @font-face {
     font-family: "Scratch";
@@ -72,66 +19,220 @@
     src: url("scratch/detail/Scratch Detail.ttf");
   }
 
-  #content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
+  body { margin: 0; background: #333; color: #ccc; }
+  .page { width: 100vw; height: 100vh; position: relative; box-sizing: border-box; }
+  a { color: white; }
 
-  /* https://www.webdesignerdepot.com/2014/06/how-to-get-started-with-layer-fonts-in-css/ */
-  #title {
-    position: relative;
-    margin: 0;
-    font-size: 5em;
-    font-weight: bold;
-    font-family: 'Scratch', Helvetica;
-    color: #DDDDDD;
-  }
-  #title::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    content: attr(text);
-    font-family: 'Scratch-Detail', Helvetica;
-    color: #39CCCC;
-  }
-  #logo {
-    margin: auto;
-    display: block;
-    width: 240px;
-    margin: -20% auto;
-  }
-
-  @media (max-width: 450px) {
-    #logo { width: 320px; }
-  }
-
-  @media (min-width: 451px) and (max-width: 800px) {
-    #title { margin-bottom: 2rem; }
-    #logo { width: 320px; }
-  }
-
-  @media (min-width: 801px) {
-    #title { margin-bottom: 2rem; }
-    #logo { width: 480px; }
-  }
+  /* @todo */
+  a { pointer-events: none; }
 </style>
 
 </head>
 <body>
 
-<div id="content">
-  <h1 id="title" text="996 BAND">996 BAND</h1>
-  <img id="logo" alt="Logo" title="Logo" src="996-white.png">
+
+
+
+<!-- #cover -->
+
+<style id="cover-style">
+  /* https://codepen.io/tedmcdo/pen/PqxKXg */
+  #cover { background: radial-gradient(ellipse at center, #333 0%, #333 30%, #000 100%); }
+
+  #cover .ocean { position: absolute; left: 0; right: 0; bottom: 0; height: 5%; background: #333; }
+
+  #cover .wave {
+    position: absolute; top: -150px; width: 6400px; height: 150px; background: url(wave.svg) repeat-x; transform: translate3d(0,0,0);
+    animation:
+      cover-wave 7s cubic-bezier(.36,.45,.63,.53) infinite;
+  }
+  #cover .wave:nth-of-type(2) {
+    top: -125px;
+    animation:
+      cover-wave 10s cubic-bezier(.36,.45,.63,.53) -3s infinite,
+      cover-swell 7s ease -3s infinite;
+  }
+
+  @keyframes cover-wave {
+    0% { margin-left: 0; }
+    100% { margin-left: -1600px; }
+  }
+  @keyframes swell {
+    0%, 100% { transform: translate3d(0,-25px,0); }
+    50% { transform: translate3d(0,5px,0); }
+  }
+</style>
+
+<style id="cover-style-content">
+  #cover-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+
+  /* https://www.webdesignerdepot.com/2014/06/how-to-get-started-with-layer-fonts-in-css/ */
+  #cover-title {
+    position: relative; margin: 0;
+    font-size: 5em; font-weight: bold; font-family: 'Scratch', Helvetica; color: #DDDDDD;
+  }
+  #cover-title::before {
+    content: attr(text); position: absolute; top: 0; left: 0; right: 0;
+    font-family: 'Scratch-Detail', Helvetica; color: #39CCCC;
+  }
+  #cover-logo { display: block; width: 240px; margin: -20% auto; }
+
+  @media (max-width: 450px) {
+    #cover-logo { width: 320px; }
+  }
+  @media (min-width: 451px) and (max-width: 800px) {
+    #cover-title { margin-bottom: 2rem; }
+    #cover-logo { width: 320px; }
+  }
+  @media (min-width: 801px) {
+    #title { margin-bottom: 2rem; }
+    #cover-logo { width: 480px; }
+  }
+</style>
+
+<div id="cover" class="page">
+  <div id="cover-content">
+    <h1 id="cover-title" text="996 BAND">996 BAND</h1>
+    <img id="cover-logo" alt="Logo" src="996-white.png">
+  </div>
+  <div class="ocean">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
 </div>
 
-<div class="ocean">
-  <div class="wave"></div>
-  <div class="wave"></div>
+
+
+
+<!-- #about -->
+
+<style id="about-style">
+  #about { display: flex; align-items: stretch; }
+  #about-intro,
+  #about-plus { position: absolute; top: 0; left: 0; }
+  #about-intro { top: 5vh; left: 5vw; right: 10vw; bottom: 10vh; }
+  #about-intro > h2 { font-size: 6vw; margin: 0 0 0.5em; }
+  #about-intro > p { font-size: 2vw; margin: 0 0 0.5em; }
+  #about .musician {
+    flex: 1; position: relative; transition: flex .3s;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  #about .musician:hover { flex: 2; }
+  #about .musician > h3 { font-size: 6vw; margin: 15vh 0 0.25em; }
+  #about .musician > p { font-size: 3vw; margin: 0 0 0.25em; }
+  #about .musician .poster { position: absolute; z-index: -1; }
+</style>
+
+<style id="about-style-musician">
+  /* todo */
+</style>
+
+<style id="about-style-plus">
+  /* todo */
+</style>
+
+<div id="about" class="page">
+  <div id="about-intro">
+    <h2>乐队介绍</h2>
+    <p>996 乐队由三位前端工程师组成，团员于 2013 年在手机淘宝共事并相互结识，之后于 2016 年成团。乐队坚持为国内广大的程序员和上班族创作歌曲。坚持 Live 表演。</p>
+  </div>
+  <div id="about-wanyan" class="musician">
+    <h3>完颜</h3>
+    <p>吉他手</p>
+    <!-- <img class="poster" alt="musician wanyan" src="/musician-wanyan.jpg"> -->
+  </div>
+  <div id="about-zhuxun" class="musician">
+    <h3>渚薰</h3>
+    <p>鼓手</p>
+    <!-- <img class="poster" alt="musician zhuxun" src="/musician-zhuxun.jpg"> -->
+  </div>
+  <div id="about-gougu" class="musician">
+    <h3>勾股</h3>
+    <p>键盘手</p>
+    <!-- <img class="poster" alt="musician gougu" src="/musician-gougu.jpg"> -->
+  </div>
+  <div id="about-plus">
+    <!-- <img id="about-xiaotian" class="avatar" alt="boss xiaotian" src="/boss-xiaotian.jpg"> -->
+    <!-- <img id="about-hanquan" class="avatar" alt="boss hanquan" src="/boss-hanquan.jpg"> -->
+  </div>
 </div>
+
+
+
+
+<!-- #todo-news -->
+
+
+
+
+<!-- #resource -->
+
+<style id="resource-style">
+  #resource { display: flex; align-items: stretch; background-color: rgba(255,255,255,0.05); padding: 3vw; }
+  #resource > h2 { position: absolute; top: 5vh; left: 5vw; margin: 0; font-size: 6vw; }
+  #resource-photos,
+  #resource-videos { display: grid; grid-gap: 3vw; }
+  #resource-photos { flex: 3; margin-right: 3vw; grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr; grid-auto-flow: row dense; }
+  #resource-videos { flex: 1; grid-template: 1fr 1fr 1fr / 1fr; grid-auto-flow: column; }
+  #resource-photos .photo.is-large { grid-column-end: span 2; grid-row-end: span 2; }
+  #resource-photos .photo { background-color: rgba(255,255,255,0.2); }
+  #resource-videos .video { background-color: rgba(255,255,255,0.2); }
+</style>
+
+<div id="resource" class="page">
+  <h2>乐队影集</h2>
+  <div id="resource-photos">
+    <a class="photo" href="#" target="_blank">
+      <!-- <img class="thumbnail" src="/photo-01.jpg" alt=""> -->
+    </a>
+    <a class="photo is-large" href="#" target="_blank">
+      <!-- <img class="thumbnail" src="/photo-02.jpg" alt=""> -->
+    </a>
+    <a class="photo" href="#" target="_blank">
+      <!-- <img class="thumbnail" src="/photo-03.jpg" alt=""> -->
+    </a>
+    <a class="photo" href="#" target="_blank">
+      <!-- <img class="thumbnail" src="/photo-04.jpg" alt=""> -->
+    </a>
+    <a class="photo" href="#" target="_blank">
+      <!-- <img class="thumbnail" src="/photo-05.jpg" alt=""> -->
+    </a>
+    <a id="resource-more" href="#">...</a>
+  </div>
+  <div id="resource-videos">
+    <a class="video" href="#" target="_blank">
+      <!-- <img class="thumbnail" src="/video-01.jpg" alt=""> -->
+    </a>
+    <a class="video" href="#" target="_blank">
+      <!-- <img class="thumbnail" src="/video-02.jpg" alt=""> -->
+    </a>
+    <a id="resource-more" href="#">...</a>
+  </div>
+</div>
+
+
+
+
+<!-- #todo-shop -->
+
+
+
+
+<!-- #contact -->
+
+<style id="contact-style">
+  #contact { display: flex; flex-direction: column; }
+  #contact > h2 { font-size: 6vw; margin: 5vh 5vw 0.5em; }
+  #contact > p { font-size: 2vw; margin: 0 5vw 0.5em; }
+</style>
+
+<div id="contact" class="page">
+  <h2>联系我们</h2>
+  <p>(WIP) <a href="#">订阅 996 乐队的邮件新闻，第一时间获得乐队咨询和演出信息。</a></p>
+</div>
+
+
+
 
 </body>
 </html>

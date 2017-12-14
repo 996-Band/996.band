@@ -12,11 +12,11 @@
   /* http://fontm.com/scratch-font/ */
   @font-face {
     font-family: "Scratch";
-    src: url("scratch/basic/Scratch Basic.ttf");
+    src: url("/scratch/basic/Scratch Basic.ttf");
   }
   @font-face {
     font-family: "Scratch-Detail";
-    src: url("scratch/detail/Scratch Detail.ttf");
+    src: url("/scratch/detail/Scratch Detail.ttf");
   }
 
   body { margin: 0; background: #333; color: #ccc; font-family: "PingFang SC"; }
@@ -39,7 +39,7 @@
   #cover .ocean { position: absolute; left: 0; right: 0; bottom: 0; height: 5%; background: #333; }
 
   #cover .wave {
-    position: absolute; top: -150px; width: 6400px; height: 150px; background: url(wave.svg) repeat-x; transform: translate3d(0,0,0);
+    position: absolute; top: -150px; width: 6400px; height: 150px; background: url(/images/wave.svg) repeat-x; transform: translate3d(0,0,0);
     animation:
       cover-wave 7s cubic-bezier(.36,.45,.63,.53) infinite;
   }
@@ -104,7 +104,7 @@
 <div id="cover" class="page">
   <div id="cover-content">
     <h1 id="cover-title" text="996 BAND">996 BAND</h1>
-    <img id="cover-logo" alt="Logo" src="996-white.png">
+    <img id="cover-logo" alt="Logo" src="/images/996-white.png">
   </div>
   <div class="ocean">
     <div class="wave"></div>
@@ -160,21 +160,21 @@
   <div id="about-wanyan" class="musician">
     <h3>完颜</h3>
     <p>吉他手</p>
-    <object class="bg" data="/996-wanyan.svg" type="image/svg+xml"></object>
+    <object class="bg" data="/images/996-wanyan.svg" type="image/svg+xml"></object>
   </div>
   <div id="about-zhuxun" class="musician">
     <h3>渚薰</h3>
     <p>鼓手</p>
-    <object class="bg" data="/996-zhuxun.svg" type="image/svg+xml"></object>
+    <object class="bg" data="/images/996-zhuxun.svg" type="image/svg+xml"></object>
   </div>
   <div id="about-gougu" class="musician">
     <h3>勾股</h3>
     <p>键盘手</p>
-    <object class="bg" data="/996-gougu.svg" type="image/svg+xml"></object>
+    <object class="bg" data="/images/996-gougu.svg" type="image/svg+xml"></object>
   </div>
   <div id="about-plus">
-    <!-- <img id="about-xiaotian" class="avatar" alt="boss xiaotian" src="/boss-xiaotian.jpg"> -->
-    <!-- <img id="about-hanquan" class="avatar" alt="boss hanquan" src="/boss-hanquan.jpg"> -->
+    <!-- <img id="about-xiaotian" class="avatar" alt="boss xiaotian" src="..."> -->
+    <!-- <img id="about-hanquan" class="avatar" alt="boss hanquan" src="..."> -->
   </div>
 </div>
 
@@ -261,7 +261,7 @@
 <div id="contact" class="page">
   <h2>联系我们</h2>
   <p><a href="https://www.getrevue.co/profile/996-band" target="_blank">订阅 996 乐队的邮件新闻，第一时间获得乐队咨询和演出信息。</a></p>
-  <img id="contact-logo" src="/996-white.png">
+  <img id="contact-logo" src="/images/996-white.png">
 </div>
 
 

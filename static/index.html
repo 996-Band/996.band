@@ -20,7 +20,7 @@
   }
 
   body { margin: 0; background: #333; color: #ccc; font-family: "PingFang SC"; }
-  .page { width: 100vw; height: 100vh; min-height: 60vw; position: relative; box-sizing: border-box; }
+  .page { width: 100vw; height: 100vh; min-height: 75vw; position: relative; box-sizing: border-box; }
   a { color: white; }
 </style>
 
@@ -136,13 +136,18 @@
   #about .musician:hover { color: white; }
   #about .musician > h3 { font-size: 6vw; margin: 30vh 0 0.25em; }
   #about .musician > p { font-size: 3vw; margin: 0 0 0.25em; }
-  #about .musician .bg { position: absolute; z-index: -1; width: 100vh; height: 100vh; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  #about .musician .bg { position: absolute; z-index: -1; width: 100vh; min-width: 75vw; height: 100vh; min-height: 75vw; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+</style>
 
+<style id="about-style-responsive">
   @media (max-width: 450px) {
-  }
-  @media (min-width: 451px) and (max-width: 800px) {
-  }
-  @media (min-width: 801px) {
+    #about { height: auto; display: block; }
+    #about-intro { position: static; padding: 2em; }
+    #about-intro > h2 { font-size: 2em; }
+    #about-intro > p { font-size: 1em; }
+    #about .musician { display: block; padding: 2em; box-sizing: border-box; min-height: 100vw; overflow: hidden; }
+    #about .musician > h3 { font-size: 2em; margin: 0 0 0.25em; }
+    #about .musician > p { font-size: 1em; margin: 0 0 0.25em; }
   }
 </style>
 

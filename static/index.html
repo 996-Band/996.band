@@ -119,7 +119,7 @@
 <!-- #about -->
 
 <style id="about-style">
-  #about { display: flex; align-items: stretch; overflow: hidden; text-shadow: 3px 3px 3px #333; }
+  #about { display: flex; max-height: 60vw; align-items: stretch; overflow: hidden; text-shadow: 3px 3px 3px #333; }
   #about-intro,
   #about-plus { position: absolute; top: 0; left: 0; }
   #about-intro { top: 5vh; left: 5vw; right: 10vw; bottom: 10vh; }
@@ -132,24 +132,23 @@
   #about .musician:nth-child(2) { flex: 1; }
   #about .musician:nth-child(3) { flex: 2; }
   #about .musician:nth-child(4) { flex: 1; }
-  #about .musician:nth-child(2):hover { flex: 3; }
-  #about .musician:nth-child(3):hover { flex: 4; }
-  #about .musician:nth-child(4):hover { flex: 3; }
+  #about .musician:hover { flex: 3; }
   #about .musician:hover { color: white; }
   #about .musician > h3 { font-size: 6vw; margin: 30vh 0 0.25em; }
   #about .musician > p { font-size: 3vw; margin: 0 0 0.25em; }
-  #about .musician .bg { position: absolute; z-index: -1; width: 100vh; min-width: 75vw; height: 100vh; min-height: 75vw; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  #about .musician .bg { position: absolute; z-index: -1; width: 100vh; max-width: 80vw; height: 100vh; max-height: 80vw; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 </style>
 
 <style id="about-style-responsive">
   @media (max-width: 450px) {
-    #about { height: auto; display: block; }
+    #about { height: auto; max-height: none; display: block; }
     #about-intro { position: static; padding: 2em; }
     #about-intro > h2 { font-size: 2em; }
     #about-intro > p { font-size: 1em; }
-    #about .musician { display: block; padding: 2em; box-sizing: border-box; min-height: 100vw; overflow: hidden; }
+    #about .musician { display: block; width: auto; padding: 2em; box-sizing: border-box; min-height: 100vw; overflow: hidden; }
     #about .musician > h3 { font-size: 2em; margin: 0 0 0.25em; }
     #about .musician > p { font-size: 1em; margin: 0 0 0.25em; }
+    #about .musician .bg { max-width: none; max-height: none; }
   }
 </style>
 

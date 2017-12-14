@@ -19,7 +19,7 @@
     src: url("scratch/detail/Scratch Detail.ttf");
   }
 
-  body { margin: 0; background: #333; color: #ccc; }
+  body { margin: 0; background: #333; color: #ccc; font-family: "PingFang SC"; }
   .page { width: 100vw; height: 100vh; min-height: 60vw; position: relative; box-sizing: border-box; }
   a { color: white; }
 </style>
@@ -54,7 +54,7 @@
     0% { margin-left: 0; }
     100% { margin-left: -1600px; }
   }
-  @keyframes swell {
+  @keyframes cover-swell {
     0%, 100% { transform: translate3d(0,-25px,0); }
     50% { transform: translate3d(0,5px,0); }
   }
@@ -73,6 +73,18 @@
     font-family: 'Scratch-Detail', Helvetica; color: #39CCCC;
   }
   #cover-logo { display: block; width: 240px; margin: -20% auto; }
+
+  #cover-scroll-btn {
+    position: absolute; z-index: 10; left: 50%; bottom: 10vh; width: 40px; height: 40px; transform: translateX(-50%) rotate(45deg); transform-origin: center center;
+    border: 2px solid white; border-left: none; border-top: none;
+    animation: cover-breath 2s infinite;
+  }
+
+  @keyframes cover-breath {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+  }
 
   @media (max-width: 450px) {
     #cover-logo { width: 320px; }
@@ -96,6 +108,7 @@
     <div class="wave"></div>
     <div class="wave"></div>
   </div>
+  <div id="cover-scroll-btn"></div>
 </div>
 
 
@@ -123,7 +136,7 @@
   #about .musician:hover { color: white; }
   #about .musician > h3 { font-size: 6vw; margin: 30vh 0 0.25em; }
   #about .musician > p { font-size: 3vw; margin: 0 0 0.25em; }
-  #about .musician .bg { position: absolute; z-index: -1; width: 100vh; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  #about .musician .bg { position: absolute; z-index: -1; width: 100vh; height: 100vh; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 
   @media (max-width: 450px) {
   }
@@ -203,7 +216,6 @@
     <a class="video" href="http://v.youku.com/v_show/id_XMzIyNzM1NTk4OA==.html" style="background-image: url(https://vthumb.ykimg.com/054104085A30A95B00000171540BA94F)" target="_blank">996 乐队新+新歌发表会<br>(键盘手全景机位)</a>
     <a class="video" href="http://v.youku.com/v_show/id_XMjg4Mzk0MTUwMA==.html" style="background-image: url(https://vthumb.ykimg.com/05410408595D1D220000016D610DD8BE);" target="_blank">Rolling in the deep<br>2017 淘宝武林大会开场表演</a>
     <a class="video" href="http://v.youku.com/v_show/id_XMjQ3ODI2MDQxMg==.html" style="background-image: url(https://vthumb.ykimg.com/05410408588155386C288183A269D535)" target="_blank">码农的故事</a>
-    <a id="resource-more" href="#">...</a>
   </div>
 </div>
 

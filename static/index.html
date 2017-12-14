@@ -189,7 +189,7 @@
 <!-- #resource -->
 
 <style id="resource-style">
-  #resource { display: flex; align-items: stretch; background-color: rgba(255,255,255,0.05); padding: 3vw; }
+  #resource { display: flex; max-height: 100vw; align-items: stretch; background-color: rgba(255,255,255,0.05); padding: 3vw; }
   #resource > h2 { position: absolute; top: 5vh; left: 5vw; margin: 0; font-size: 6vw; text-shadow: 3px 3px 3px #333; }
   #resource-photos,
   #resource-videos { display: grid; grid-gap: 3vw; }
@@ -201,6 +201,12 @@
   #resource-videos .video:hover { box-shadow: 0 0 5px 5px rgba(255,255,255,0.2); }
 
   @media (max-width: 450px) {
+    #resource { padding-top: 6em; flex-direction: column; max-height: none; height: auto; }
+    #resource > h2 { font-size: 2em; }
+    #resource-photos,
+    #resource-videos { grid-template: 40vw / 1fr 1fr; grid-auto-rows: 40vw; grid-auto-flow: row dense; }
+    #resource-photos { margin: 0 0 3vw; }
+    #resource-photos .photo.is-large { grid-column-end: span 2; grid-row-end: span 1; }
   }
   @media (min-width: 451px) and (max-width: 800px) {
   }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink" width="800" height="800">
+  <defs>
+    <clipPath id="clip-zhuxun">
+      <polygon points="200,0 800,0 800,800 0,800"/>
+    </clipPath>
+  </defs>
+  <image xlink:href="/images/996-zhuxun.jpg" x="0" y="0" height="800px" width="800px" clip-path="url(#clip-zhuxun)"/>
+</svg>

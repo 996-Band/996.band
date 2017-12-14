@@ -20,11 +20,8 @@
   }
 
   body { margin: 0; background: #333; color: #ccc; }
-  .page { width: 100vw; height: 100vh; position: relative; box-sizing: border-box; }
+  .page { width: 100vw; height: 100vh; min-height: 60vw; position: relative; box-sizing: border-box; }
   a { color: white; }
-
-  /* @todo */
-  a { pointer-events: none; }
 </style>
 
 </head>
@@ -107,29 +104,33 @@
 <!-- #about -->
 
 <style id="about-style">
-  #about { display: flex; align-items: stretch; }
+  #about { display: flex; align-items: stretch; overflow: hidden; text-shadow: 3px 3px 3px #333; }
   #about-intro,
   #about-plus { position: absolute; top: 0; left: 0; }
   #about-intro { top: 5vh; left: 5vw; right: 10vw; bottom: 10vh; }
   #about-intro > h2 { font-size: 6vw; margin: 0 0 0.5em; }
   #about-intro > p { font-size: 2vw; margin: 0 0 0.5em; }
   #about .musician {
-    flex: 1; position: relative; transition: flex .3s;
+    flex: 2; position: relative; transition: flex .3s, color .3s;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
   }
-  #about .musician:hover { flex: 2; }
-  #about .musician > h3 { font-size: 6vw; margin: 15vh 0 0.25em; }
+  #about .musician:nth-child(2) { flex: 1; }
+  #about .musician:nth-child(3) { flex: 2; }
+  #about .musician:nth-child(4) { flex: 1; }
+  #about .musician:nth-child(2):hover { flex: 3; }
+  #about .musician:nth-child(3):hover { flex: 4; }
+  #about .musician:nth-child(4):hover { flex: 3; }
+  #about .musician:hover { color: white; }
+  #about .musician > h3 { font-size: 6vw; margin: 30vh 0 0.25em; }
   #about .musician > p { font-size: 3vw; margin: 0 0 0.25em; }
-  #about .musician .poster { position: absolute; z-index: -1; }
-  /* todo responsive */
-</style>
+  #about .musician .bg { position: absolute; z-index: -1; width: 100vh; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 
-<style id="about-style-musician">
-  /* todo */
-</style>
-
-<style id="about-style-plus">
-  /* todo */
+  @media (max-width: 450px) {
+  }
+  @media (min-width: 451px) and (max-width: 800px) {
+  }
+  @media (min-width: 801px) {
+  }
 </style>
 
 <div id="about" class="page">
@@ -140,17 +141,17 @@
   <div id="about-wanyan" class="musician">
     <h3>完颜</h3>
     <p>吉他手</p>
-    <!-- <img class="poster" alt="musician wanyan" src="/musician-wanyan.jpg"> -->
+    <object class="bg" data="/996-wanyan.svg" type="image/svg+xml"></object>
   </div>
   <div id="about-zhuxun" class="musician">
     <h3>渚薰</h3>
     <p>鼓手</p>
-    <!-- <img class="poster" alt="musician zhuxun" src="/musician-zhuxun.jpg"> -->
+    <object class="bg" data="/996-zhuxun.svg" type="image/svg+xml"></object>
   </div>
   <div id="about-gougu" class="musician">
     <h3>勾股</h3>
     <p>键盘手</p>
-    <!-- <img class="poster" alt="musician gougu" src="/musician-gougu.jpg"> -->
+    <object class="bg" data="/996-gougu.svg" type="image/svg+xml"></object>
   </div>
   <div id="about-plus">
     <!-- <img id="about-xiaotian" class="avatar" alt="boss xiaotian" src="/boss-xiaotian.jpg"> -->
@@ -170,44 +171,38 @@
 
 <style id="resource-style">
   #resource { display: flex; align-items: stretch; background-color: rgba(255,255,255,0.05); padding: 3vw; }
-  #resource > h2 { position: absolute; top: 5vh; left: 5vw; margin: 0; font-size: 6vw; }
+  #resource > h2 { position: absolute; top: 5vh; left: 5vw; margin: 0; font-size: 6vw; text-shadow: 3px 3px 3px #333; }
   #resource-photos,
   #resource-videos { display: grid; grid-gap: 3vw; }
   #resource-photos { flex: 3; margin-right: 3vw; grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr; grid-auto-flow: row dense; }
   #resource-videos { flex: 1; grid-template: 1fr 1fr 1fr / 1fr; grid-auto-flow: column; }
   #resource-photos .photo.is-large { grid-column-end: span 2; grid-row-end: span 2; }
-  #resource-photos .photo { background-color: rgba(255,255,255,0.2); }
-  #resource-videos .video { background-color: rgba(255,255,255,0.2); }
-  /* todo responsive */
+  #resource-photos .photo { background-color: rgba(255,255,255,0.2); background-size: cover; background-position: center center; }
+  #resource-videos .video { background-color: rgba(255,255,255,0.2); background-size: cover; background-position: center center; display: flex; text-align: center; align-items: center; justify-content: center; font-size: 20px; text-decoration: none; text-shadow: 3px 3px 3px #333; }
+  #resource-videos .video:hover { box-shadow: 0 0 5px 5px rgba(255,255,255,0.2); }
+
+  @media (max-width: 450px) {
+  }
+  @media (min-width: 451px) and (max-width: 800px) {
+  }
+  @media (min-width: 801px) {
+  }
 </style>
 
 <div id="resource" class="page">
   <h2>乐队影集</h2>
   <div id="resource-photos">
-    <a class="photo" href="#" target="_blank">
-      <!-- <img class="thumbnail" src="/photo-01.jpg" alt=""> -->
-    </a>
-    <a class="photo is-large" href="#" target="_blank">
-      <!-- <img class="thumbnail" src="/photo-02.jpg" alt=""> -->
-    </a>
-    <a class="photo" href="#" target="_blank">
-      <!-- <img class="thumbnail" src="/photo-03.jpg" alt=""> -->
-    </a>
-    <a class="photo" href="#" target="_blank">
-      <!-- <img class="thumbnail" src="/photo-04.jpg" alt=""> -->
-    </a>
-    <a class="photo" href="#" target="_blank">
-      <!-- <img class="thumbnail" src="/photo-05.jpg" alt=""> -->
-    </a>
-    <a id="resource-more" href="#">...</a>
+    <div class="photo" style="background-image: url(/images/live-xx.jpg)"></div>
+    <div class="photo is-large" style="background-image: url(/images/live-xx-2.jpg)"></div>
+    <div class="photo" style="background-image: url(/images/live-ata.jpg)"></div>
+    <div class="photo" style="background-image: url(/images/live-w.jpg)"></div>
+    <div class="photo" style="background-image: url(/images/live-n.jpg)"></div>
+    <div class="photo" style="background-image: url(/images/live-x.jpg)"></div>
   </div>
   <div id="resource-videos">
-    <a class="video" href="#" target="_blank">
-      <!-- <img class="thumbnail" src="/video-01.jpg" alt=""> -->
-    </a>
-    <a class="video" href="#" target="_blank">
-      <!-- <img class="thumbnail" src="/video-02.jpg" alt=""> -->
-    </a>
+    <a class="video" href="http://v.youku.com/v_show/id_XMzIyNzM1NTk4OA==.html" style="background-image: url(https://vthumb.ykimg.com/054104085A30A95B00000171540BA94F)" target="_blank">996 乐队新+新歌发表会<br>(键盘手全景机位)</a>
+    <a class="video" href="http://v.youku.com/v_show/id_XMjg4Mzk0MTUwMA==.html" style="background-image: url(https://vthumb.ykimg.com/05410408595D1D220000016D610DD8BE);" target="_blank">Rolling in the deep<br>2017 淘宝武林大会开场表演</a>
+    <a class="video" href="http://v.youku.com/v_show/id_XMjQ3ODI2MDQxMg==.html" style="background-image: url(https://vthumb.ykimg.com/05410408588155386C288183A269D535)" target="_blank">码农的故事</a>
     <a id="resource-more" href="#">...</a>
   </div>
 </div>
@@ -224,14 +219,22 @@
 
 <style id="contact-style">
   #contact { display: flex; flex-direction: column; }
-  #contact > h2 { font-size: 6vw; margin: 5vh 5vw 0.5em; }
+  #contact > h2 { font-size: 6vw; margin: 5vh 5vw 0.5em; text-shadow: 3px 3px 3px #333; }
   #contact > p { font-size: 2vw; margin: 0 5vw 0.5em; }
-  /* todo responsive */
+  #contact-logo { width: 20vw; position: absolute; bottom: 10vh; left: 50%; transform: translateX(-50%); }
+
+  @media (max-width: 450px) {
+  }
+  @media (min-width: 451px) and (max-width: 800px) {
+  }
+  @media (min-width: 801px) {
+  }
 </style>
 
 <div id="contact" class="page">
   <h2>联系我们</h2>
-  <p>(WIP) <a href="#">订阅 996 乐队的邮件新闻，第一时间获得乐队咨询和演出信息。</a></p>
+  <p><a href="https://www.getrevue.co/profile/996-band" target="_blank">订阅 996 乐队的邮件新闻，第一时间获得乐队咨询和演出信息。</a></p>
+  <img id="contact-logo" src="/996-white.png">
 </div>
 
 
@@ -239,3 +242,4 @@
 
 </body>
 </html>
+

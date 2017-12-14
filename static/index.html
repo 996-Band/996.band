@@ -20,7 +20,7 @@
   }
 
   body { margin: 0; background: #333; color: #ccc; font-family: "PingFang SC"; }
-  .page { width: 100vw; height: 100vh; min-height: 75vw; position: relative; box-sizing: border-box; }
+  .page { width: 100vw; height: 100vh; min-height: 50vw; position: relative; box-sizing: border-box; }
   a { color: white; }
 </style>
 
@@ -87,9 +87,11 @@
   }
 
   @media (max-width: 450px) {
+    #cover { min-height: 75vw; }
     #cover-logo { width: 320px; }
   }
   @media (min-width: 451px) and (max-width: 800px) {
+    #cover { min-height: 75vw; }
     #cover-title { margin-bottom: 2rem; }
     #cover-logo { width: 320px; }
   }

@@ -242,12 +242,15 @@
 <!-- #contact -->
 
 <style id="contact-style">
-  #contact { display: flex; flex-direction: column; }
+  #contact { display: flex; flex-direction: column; max-height: 100vw; }
   #contact > h2 { font-size: 6vw; margin: 5vh 5vw 0.5em; text-shadow: 3px 3px 3px #333; }
   #contact > p { font-size: 2vw; margin: 0 5vw 0.5em; }
   #contact-logo { width: 20vw; position: absolute; bottom: 10vh; left: 50%; transform: translateX(-50%); }
 
   @media (max-width: 450px) {
+    #contact > h2 { font-size: 2em; }
+    #contact > p { font-size: 1em; }
+    #contact-logo { width: 40vw; height: 40vw; }
   }
   @media (min-width: 451px) and (max-width: 800px) {
   }

@@ -19,10 +19,12 @@
     src: url("/scratch/detail/Scratch Detail.ttf");
   }
 
-  body { margin: 0; background: #333; color: #ccc; font-family: "PingFang SC"; }
+  body { margin: 0; background: #333; color: #ccc; font-family: "PingFang SC"; scroll-behavior: smooth; }
   .page { width: 100vw; height: 100vh; min-height: 50vw; position: relative; box-sizing: border-box; }
   a { color: white; }
 </style>
+
+<script src="/smoothscroll-polyfill.js"></script>
 
 </head>
 <body>
@@ -80,6 +82,10 @@
     animation: cover-breath 2s infinite;
   }
 
+  #cover-guang { position: absolute; bottom: 20vh; right: -5px; border: 2px yellow solid; padding-right: 0.5em; font-size: 2vw; text-decoration: none; white-space: nowrap; }
+  #cover-guang:hover { background-color: yellow; color: #333; }
+  #cover-guang mark { background-color: yellow; color: #333; padding: 0 0.5em; }
+
   @keyframes cover-breath {
     0% { opacity: 0; }
     50% { opacity: 0.5; }
@@ -89,6 +95,7 @@
   @media (max-width: 450px) {
     #cover { min-height: 75vw; }
     #cover-logo { width: 320px; }
+    #cover-guang { font-size: 1.25em; right: 50%; transform: translateX(50%); }
   }
   @media (min-width: 451px) and (max-width: 800px) {
     #cover { min-height: 75vw; }
@@ -110,7 +117,8 @@
     <div class="wave"></div>
     <div class="wave"></div>
   </div>
-  <div id="cover-scroll-btn"></div>
+  <div id="cover-scroll-btn" onclick="window.scroll({ top: window.innerHeight, left: 0, behavior: 'smooth' });"></div>
+  <a id="cover-guang" href="https://www.tshe.com/c/6b097f9e" target="_blank"><mark>HOT</mark> 限时选购 996 乐队T恤</a>
 </div>
 
 
@@ -123,8 +131,8 @@
   #about-intro,
   #about-plus { position: absolute; top: 0; left: 0; }
   #about-intro { top: 5vh; left: 5vw; right: 10vw; bottom: 10vh; }
-  #about-intro > h2 { font-size: 4vw; margin: 0 0 0.5em; }
-  #about-intro > p { font-size: 2vw; margin: 0 0 0.5em; }
+  #about-intro > h2 { font-size: 4vw; margin: 0 0 1em; }
+  #about-intro > p { font-size: 2vw; margin: 0 0 1.5em; }
   #about .musician {
     flex: 2; position: relative; transition: flex .3s, color .3s;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -258,10 +266,15 @@
 <!-- #contact -->
 
 <style id="contact-style">
-  #contact { display: flex; flex-direction: column; max-height: 100vw; }
-  #contact > h2 { font-size: 4vw; margin: 5vh 5vw 0.5em; text-shadow: 3px 3px 3px #333; }
-  #contact > p { font-size: 2vw; margin: 0 5vw 0.5em; }
+  #contact { display: flex; flex-direction: column; max-height: 150vw; }
+  #contact > h2 { font-size: 4vw; margin: 5vh 5vw 1em; text-shadow: 3px 3px 3px #333; }
+  #contact > p { font-size: 2vw; margin: 0 5vw 1.5em; }
   #contact-logo { width: 20vw; position: absolute; bottom: 10vh; left: 50%; transform: translateX(-50%); }
+  #contact a { text-decoration: none; position: relative; display: inline-block; }
+  #contact a::after { position: absolute; left: 0; right: 0.5em; bottom: -8px; background-color: white; height: 2px; content: ""; }
+  #contact mark { background-color: yellow; color: #333; padding: 0 0.5em; }
+  #contact a.hot { padding-right: 0.5em; }
+  #contact a.hot:hover { background-color: yellow; color: #333; }
 
   @media (max-width: 450px) {
     #contact > h2 { font-size: 2em; }
@@ -276,7 +289,8 @@
 
 <div id="contact" class="page">
   <h2>关注我们</h2>
-  <p><a href="https://www.getrevue.co/profile/996-band" target="_blank">订阅 996 乐队的邮件新闻，第一时间获得乐队资讯和演出信息。</a></p>
+  <p><a href="https://www.tshe.com/c/6b097f9e" class="hot" target="_blank"><mark>HOT</mark> 限时选购 996 乐队T恤</a></p>
+  <p><a href="https://www.getrevue.co/profile/996-band" target="_blank">点击这里订阅 996 乐队的邮件新闻，第一时间获得乐队资讯和演出信息。</a></p>
   <img id="contact-logo" src="/images/996-white.png">
 </div>
 

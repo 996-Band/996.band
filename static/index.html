@@ -119,7 +119,7 @@
 <!-- #about -->
 
 <style id="about-style">
-  #about { display: flex; margin: auto; max-height: 60vw; align-items: stretch; overflow: hidden; text-shadow: 3px 3px 3px #333; }
+  #about { display: flex; margin: auto; max-height: 75vw; align-items: stretch; overflow: hidden; text-shadow: 3px 3px 3px #333; }
   #about-intro,
   #about-plus { position: absolute; top: 0; left: 0; }
   #about-intro { top: 5vh; left: 5vw; right: 10vw; bottom: 10vh; }
@@ -195,9 +195,13 @@
   #resource-videos { display: grid; grid-gap: 3vw; }
   #resource-photos { flex: 3; margin-right: 3vw; grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr; grid-auto-flow: row dense; }
   #resource-videos { flex: 1; grid-template: 1fr 1fr 1fr / 1fr; grid-auto-flow: column; }
+  #resource-photos .photo { cursor: pointer; }
   #resource-photos .photo.is-large { grid-column-end: span 2; grid-row-end: span 2; }
-  #resource-photos .photo { background-color: rgba(255,255,255,0.2); background-size: cover; background-position: center center; }
+  #resource-photos .photo > div { width: 100%; height: 100%; background-color: #000; background-size: cover; background-repeat: no-repeat; background-position: center center; }
+  #resource-photos .photo:fullscreen > div { display: block; width: 100vw; height: 100vh; background-size: contain; }
+  #resource-photos .photo:-webkit-full-screen > div { display: block; width: 100vw; height: 100vh; background-size: contain; }
   #resource-videos .video { background-color: rgba(255,255,255,0.2); background-size: cover; background-position: center center; display: flex; text-align: center; align-items: center; justify-content: center; font-size: 20px; text-decoration: none; text-shadow: 3px 3px 3px #333; }
+  #resource-photos .photo:hover,
   #resource-videos .video:hover { box-shadow: 0 0 5px 5px rgba(255,255,255,0.2); }
 
   @media (max-width: 450px) {
@@ -217,12 +221,12 @@
 <div id="resource" class="page">
   <h2>乐队影集</h2>
   <div id="resource-photos">
-    <div class="photo" style="background-image: url(/images/live-xx.jpg)"></div>
-    <div class="photo is-large" style="background-image: url(/images/live-xx-2.jpg)"></div>
-    <div class="photo" style="background-image: url(/images/live-ata.jpg)"></div>
-    <div class="photo" style="background-image: url(/images/live-w.jpg)"></div>
-    <div class="photo" style="background-image: url(/images/live-n.jpg)"></div>
-    <div class="photo" style="background-image: url(/images/live-x.jpg)"></div>
+    <div class="photo"><div style="background-image: url(/images/live-xx.jpg)"></div></div>
+    <div class="photo is-large"><div style="background-image: url(/images/live-xx-2.jpg)"></div></div>
+    <div class="photo"><div style="background-image: url(/images/live-ata.jpg)">-</div></div>
+    <div class="photo"><div style="background-image: url(/images/live-w.jpg)">-</div></div>
+    <div class="photo"><div style="background-image: url(/images/live-n.jpg)">-</div></div>
+    <div class="photo"><div style="background-image: url(/images/live-x.jpg)">-</div></div>
   </div>
   <div id="resource-videos">
     <a class="video" href="http://v.youku.com/v_show/id_XMzIyNzM1NTk4OA==.html" style="background-image: url(https://vthumb.ykimg.com/054104085A30A95B00000171540BA94F)" target="_blank">996 乐队新+新歌发表会<br>(键盘手全景机位)</a>
@@ -230,6 +234,18 @@
     <a class="video" href="http://v.youku.com/v_show/id_XMjQ3ODI2MDQxMg==.html" style="background-image: url(https://vthumb.ykimg.com/05410408588155386C288183A269D535)" target="_blank">码农的故事</a>
   </div>
 </div>
+
+<script id="resource-script">
+  [].forEach.call(document.querySelectorAll('#resource-photos .photo'), photo => {
+    photo.addEventListener('click', e => {
+      if (photo.requestFullscreen) {
+        photo.requestFullscreen()
+      } else if (photo.webkitRequestFullscreen) {
+        photo.webkitRequestFullscreen()
+      }
+    })
+  })
+</script>
 
 
 

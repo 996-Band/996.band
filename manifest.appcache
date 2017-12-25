@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# v1 - 2017-12-25
+index.html
+smoothscroll-polyfill.js
+images/996-white.png
+images/wave.svg
+images/996-gougu.jpg
+images/996-zhuxun.jpg
+images/996-wanyan.jpg
+images/live-ata.jpg
+images/live-n.jpg
+images/live-w.jpg
+images/live-x.jpg
+images/live-xx-2.jpg
+images/live-xx.jpg
+scratch/basic/Scratch%20Basic.ttf
+scratch/detail/Scratch%20Detail.ttf
+
+NETWORK:
+*
+http://*
+https://*

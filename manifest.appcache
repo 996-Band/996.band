@@ -1,20 +1,69 @@
 CACHE MANIFEST
-# v3 - 2017-12-25
+# v4 - 2019-01-08
 index.html
 smoothscroll-polyfill.js
+scratch/basic/Scratch%20Basic.ttf
+scratch/detail/Scratch%20Detail.ttf
 images/996-white.png
 images/wave.svg
 images/996-gougu.jpg
 images/996-zhuxun.jpg
 images/996-wanyan.jpg
-images/live-ata.jpg
-images/live-n.jpg
-images/live-w.jpg
-images/live-x.jpg
-images/live-xx-2.jpg
-images/live-xx.jpg
-scratch/basic/Scratch%20Basic.ttf
-scratch/detail/Scratch%20Detail.ttf
+# images/live-ata.jpg
+# images/live-n.jpg
+# images/live-w.jpg
+# images/live-x.jpg
+# images/live-xx-2.jpg
+# images/live-xx.jpg
+images/memory/thumbnails/20170122-1.jpg
+images/memory/thumbnails/20170619-5.jpg
+images/memory/thumbnails/20180412-1.jpg
+images/memory/thumbnails/20180906-4.jpg
+images/memory/thumbnails/20190106-5.jpg
+images/memory/thumbnails/20170122-2.jpg
+images/memory/thumbnails/20171212-1.jpg
+images/memory/thumbnails/20180412-2.jpg
+images/memory/thumbnails/20180906-6.jpg
+images/memory/thumbnails/20190106-6.jpg
+images/memory/thumbnails/20170222-1.jpg
+images/memory/thumbnails/20171212-2.jpg
+images/memory/thumbnails/20180412-3.jpg
+images/memory/thumbnails/20180906-7.jpg
+images/memory/thumbnails/20190106-7.jpg
+images/memory/thumbnails/20170222-2.jpg
+images/memory/thumbnails/20171212-3.jpg
+images/memory/thumbnails/20180412-4.jpg
+images/memory/thumbnails/20181124-1.jpg
+images/memory/thumbnails/20190106-8.jpg
+images/memory/thumbnails/20170510-1.jpg
+images/memory/thumbnails/20171212-5.jpg
+images/memory/thumbnails/20180420-1.jpg
+images/memory/thumbnails/20181124-2.jpg
+images/memory/thumbnails/sideshow-1.jpg
+images/memory/thumbnails/20170510-2.jpg
+images/memory/thumbnails/20171216-1.jpg
+images/memory/thumbnails/20180420-2.jpg
+images/memory/thumbnails/20181124-3.jpg
+images/memory/thumbnails/sideshow-2.jpg
+images/memory/thumbnails/20170619-1.jpg
+images/memory/thumbnails/20171216-2.jpg
+images/memory/thumbnails/20180420-3.jpg
+images/memory/thumbnails/20190106-1.jpg
+images/memory/thumbnails/sideshow-3.jpg
+images/memory/thumbnails/20170619-2.jpg
+images/memory/thumbnails/20180106-1.jpg
+images/memory/thumbnails/20180906-1.jpg
+images/memory/thumbnails/20190106-2.jpg
+images/memory/thumbnails/sideshow-4.jpg
+images/memory/thumbnails/20170619-3.jpg
+images/memory/thumbnails/20180106-2.jpg
+images/memory/thumbnails/20180906-2.jpg
+images/memory/thumbnails/20190106-3.jpg
+images/memory/thumbnails/sideshow-5.jpg
+images/memory/thumbnails/20170619-4.jpg
+images/memory/thumbnails/20180106-3.jpg
+images/memory/thumbnails/20180906-3.jpg
+images/memory/thumbnails/20190106-4.jpg
 
 NETWORK:
 *

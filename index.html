@@ -193,7 +193,16 @@
 
 
 
-<!-- #todo-news -->
+<style id="videos-style">
+  #videos { padding: 3vw; }
+  #videos > h2 { font-size: 4vw; text-shadow: 3px 3px 3px #333; }
+  #videos > h3 { font-size: 3vw; text-shadow: 3px 3px 3px #333; }
+</style>
+
+<div id="videos" class="page" style="height: auto;">
+  <h2>《码农》的故事</h2>
+  <iframe style="margin: 1em auto; display: block; width: 80vw; height: 45vw;" src="http://player.youku.com/embed/XMjQ3ODI2MDQxMg==" frameborder="0" allowfullscreen></iframe>
+</div>
 
 
 
@@ -201,68 +210,119 @@
 <!-- #resource -->
 
 <style id="resource-style">
-  #resource { display: flex; max-height: 100vw; align-items: stretch; background-color: rgba(255,255,255,0.05); padding: 3vw; }
-  #resource > h2 { position: absolute; top: 5vh; left: 5vw; margin: 0; font-size: 4vw; text-shadow: 3px 3px 3px #333; }
-  #resource-photos,
-  #resource-videos { display: grid; grid-gap: 3vw; }
-  #resource-photos { flex: 3; margin-right: 3vw; grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr; grid-auto-flow: row dense; }
-  #resource-videos { flex: 1; grid-template: 1fr 1fr 1fr / 1fr; grid-auto-flow: column; }
-  #resource-photos .photo { cursor: pointer; }
-  #resource-photos .photo.is-large { grid-column-end: span 2; grid-row-end: span 2; }
-  #resource-photos .photo > div { width: 100%; height: 100%; background-color: #000; background-size: cover; background-repeat: no-repeat; background-position: center center; }
-  #resource-photos .photo:fullscreen > div { display: block; width: 100vw; height: 100vh; background-size: contain; }
-  #resource-photos .photo:-webkit-full-screen > div { display: block; width: 100vw; height: 100vh; background-size: contain; }
-  #resource-videos .video { background-color: rgba(255,255,255,0.2); background-size: cover; background-position: center center; display: flex; text-align: center; align-items: center; justify-content: center; font-size: 20px; text-decoration: none; text-shadow: 3px 3px 3px #333; }
-  #resource-photos .photo:hover,
-  #resource-videos .video:hover { box-shadow: 0 0 5px 5px rgba(255,255,255,0.2); }
+  #resource { background-color: rgba(255,255,255,0.05); padding: 3vw; }
+  #resource > h2 { font-size: 4vw; text-shadow: 3px 3px 3px #333; }
+  #resource > h3 { font-size: 3vw; text-shadow: 3px 3px 3px #333; }
+  #resource > h3 > span { font-size: 2vw; margin-left: 0.5em; }
+  #resource > .event { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); grid-auto-flow: row dense; grid-gap: 3vw; align-items: center; }
+  #resource > .event > .photo > img,
+  #resource > .event > .video > img { width: 100%; }
+  #resource-preview { position: absolute; }
 
   @media (max-width: 450px) {
     #resource { padding-top: 6em; flex-direction: column; max-height: none; height: auto; }
     #resource > h2 { font-size: 2em; }
-    #resource-photos,
-    #resource-videos { grid-template: 40vw / 1fr 1fr; grid-auto-rows: 40vw; grid-auto-flow: row dense; }
-    #resource-photos { margin: 0 0 3vw; }
-    #resource-photos .photo.is-large { grid-column-end: span 2; grid-row-end: span 1; }
-  }
-  @media (min-width: 451px) and (max-width: 800px) {
-  }
-  @media (min-width: 801px) {
+    #resource > h3 { font-size: 1.5em; }
+    #resource > h3 > span { font-size: 1.25em; }
   }
 </style>
 
-<div id="resource" class="page">
-  <h2>乐队影集</h2>
-  <div id="resource-photos">
-    <div class="photo"><div style="background-image: url(/images/live-xx.jpg)"></div></div>
-    <div class="photo is-large"><div style="background-image: url(/images/live-xx-2.jpg)"></div></div>
-    <div class="photo"><div style="background-image: url(/images/live-ata.jpg)"></div></div>
-    <div class="photo"><div style="background-image: url(/images/live-w.jpg)"></div></div>
-    <div class="photo"><div style="background-image: url(/images/live-n.jpg)"></div></div>
-    <div class="photo"><div style="background-image: url(/images/live-x.jpg)"></div></div>
-  </div>
-  <div id="resource-videos">
-    <a class="video" href="http://v.youku.com/v_show/id_XMzIyNzM1NTk4OA==.html" style="background-image: url(https://vthumb.ykimg.com/054104085A30A95B00000171540BA94F)" target="_blank">996 乐队新+新歌发表会<br>(键盘手全景机位)</a>
-    <a class="video" href="http://v.youku.com/v_show/id_XMjg4Mzk0MTUwMA==.html" style="background-image: url(https://vthumb.ykimg.com/05410408595D1D220000016D610DD8BE);" target="_blank">Rolling in the deep<br>2017 淘宝武林大会开场表演</a>
-    <a class="video" href="http://v.youku.com/v_show/id_XMjQ3ODI2MDQxMg==.html" style="background-image: url(https://vthumb.ykimg.com/05410408588155386C288183A269D535)" target="_blank">码农的故事</a>
-  </div>
+<div id="resource" class="page" style="height: auto;">
+  <h2>乐队回忆</h2>
+  <div id="resource-preview"></div>
+  <!-- <h3>新歌发表会 2017-01-22</h3>
+  <div class="event">
+    <div class="photo"><img src="/images/memory/thumbnails/20170122-1.jpg" /></div>
+    <div class="photo"><img src="/images/memory/thumbnails/20170122-1.jpg" /></div>
+    <div class="photo"><img src="/images/memory/thumbnails/20170122-1.jpg" /></div>
+  </div> -->
 </div>
 
 <script id="resource-script">
-  [].forEach.call(document.querySelectorAll('#resource-photos .photo'), photo => {
-    photo.addEventListener('click', e => {
-      if (photo.requestFullscreen) {
-        photo.requestFullscreen()
-      } else if (photo.webkitRequestFullscreen) {
-        photo.webkitRequestFullscreen()
+  const resourcePreview = document.getElementById('resource-preview')
+  function preview(type, src, alt) {
+    const style = `max-width: 100vw; max-height: 100vh; display: block;`
+    resourcePreview.innerHTML = type === 'photo'
+      ? `<img style="${style}" src="${src}" alt="${alt}" />`
+      : `<video style="${style}" src="${src}" title="${alt}" autoplay loop></video>`
+    if (resourcePreview.requestFullscreen) {
+      resourcePreview.requestFullscreen()
+    } else if (resourcePreview.webkitRequestFullscreen) {
+      resourcePreview.webkitRequestFullscreen()
+    }
+  }
+  document.addEventListener('webkitfullscreenchange', () => {
+    console.log('webkitfullscreenchange')
+    if (!document.webkitFullscreenElement) {
+      resourcePreview.innerHTML = ''
+    }
+  })
+  document.addEventListener('fullscreenchange', () => {
+    console.log('fullscreenchange')
+    if (!document.fullscreenElement) {
+      resourcePreview.innerHTML = ''
+    }
+  })
+  // todo
+  // http://v.youku.com/v_show/id_XMzIyNzM1NTk4OA==.html
+  // https://vthumb.ykimg.com/054104085A30A95B00000171540BA94F
+  // http://v.youku.com/v_show/id_XMjg4Mzk0MTUwMA==.html
+  // https://vthumb.ykimg.com/05410408595D1D220000016D610DD8BE
+  const resourceData = [
+    { title: '乐队花絮', date: '',
+      photos: ['sideshow-2.jpg', '20180412-4.jpg', 'sideshow-3.jpg', 'sideshow-4.jpg', 'sideshow-5.jpg'] },
+    { title: '新歌发表会', date: '2017-01-22',
+      photos: ['20170122-1.jpg', '20170122-2.jpg'] },
+    { title: 'ATA 年会', date: '2017-02-22',
+      photos: ['20170222-1.jpg', '20170222-2.jpg'] },
+    { title: '淘宝武林大会', date: '2017-05-10',
+      photos: ['20170510-1.jpg', '20170510-2.jpg'] },
+    { title: 'Fun 码过来', date: '2017-06-19',
+      photos: ['20170619-1.jpg', '20170619-2.jpg', '20170619-3.jpg', '20170619-4.jpg', '20170619-5.jpg'] },
+    { title: '新新歌发表会', date: '2017-12-12',
+      photos: ['20171212-1.jpg', '20171212-2.jpg', '20171212-3.jpg', '20171212-5.jpg'] },
+    { title: '第十二届 D2 前端论坛', date: '2017-12-16',
+      photos: ['20171216-1.jpg', '20171216-2.jpg'] },
+    { title: '第一届 SEEConf', date: '2018-01-06',
+      photos: ['20180106-1.jpg', '20180106-2.jpg'] },
+    { title: '阿里云年会', date: '2018-04-12',
+      photos: ['20180412-1.mp4', '20180412-2.mp4', '20180412-3.jpg'] },
+    { title: '蚂蚁 Hackthon', date: '2018-04-20',
+      photos: ['20180420-1.jpg', '20180420-2.jpg', '20180420-3.jpg'] },
+    { title: '仲夏之夜', date: '2018-09-06',
+      photos: ['20180906-1.jpg', '20180906-2.jpg', '20180906-3.jpg', '20180906-4.jpg', '20180906-6.jpg', '20180906-7.jpg'] },
+    { title: 'VueConf', date: '2018-11-24',
+      photos: ['20181124-1.jpg', '20181124-2.jpg', '20181124-3.jpg'] },
+    { title: '第十三届 D2 前端论坛', date: '2019-01-06',
+      photos: ['20190106-1.jpg', '20190106-2.jpg', '20190106-3.jpg', '20190106-4.jpg', '20190106-5.jpg', '20190106-6.jpg', '20190106-7.jpg', '20190106-8.jpg'] }
+  ]
+  const resourceRoot = document.getElementById('resource')
+  resourceData.reverse().forEach(eventData => {
+    const title = document.createElement('h3')
+    title.textContent = eventData.title
+    const date = document.createElement('span')
+    date.textContent = eventData.date
+    title.appendChild(date)
+    resourceRoot.appendChild(title)
+    const event = document.createElement('div')
+    event.className = 'event'
+    resourceRoot.appendChild(event)
+    eventData.photos.forEach(photoData => {
+      const type = photoData.match(/\.jpg$/) ? 'photo' : 'video'
+      const wrapper = document.createElement('div')
+      wrapper.className = type
+      const img = document.createElement('img')
+      const alt = `${eventData.title}-${photoData}`
+      img.src = `/images/memory/thumbnails/${photoData.replace(/[^\.]+$/, 'jpg')}`
+      img.alt = alt
+      wrapper.appendChild(img)
+      event.appendChild(wrapper)
+      wrapper.onclick = () => {
+        preview(type, `/images/memory/${photoData}`, alt)
       }
     })
   })
 </script>
-
-
-
-
-<!-- #todo-shop -->
 
 
 

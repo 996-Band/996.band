@@ -1,7 +1,7 @@
 <template>
   <BandSection class="videos" style="height: auto;">
     <h2>《码农》的故事</h2>
-    <iframe class="content" src="http://player.youku.com/embed/XMjQ3ODI2MDQxMg==" frameborder="0" allowfullscreen></iframe>
+    <iframe class="content" src="//player.youku.com/embed/XMjQ3ODI2MDQxMg==" frameborder="0" allowfullscreen></iframe>
   </BandSection>
 </template>
 

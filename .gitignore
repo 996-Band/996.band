@@ -2,3 +2,4 @@ node_modules
 legacy
 dist
 .nuxt
+.DS_Store

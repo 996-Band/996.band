@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style scoped>
-  .cover { background: radial-gradient(ellipse at center, #333 0%, #333 30%, #000 100%); overflow: hidden; }
+  .cover { height: 100vh; min-height: 50vw; background: radial-gradient(ellipse at center, #333 0%, #333 30%, #000 100%); overflow: hidden; }
   .content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
   .title { margin: 0; font-size: 5em; }
   .ocean { position: absolute; left: 0; right: 0; bottom: 0; height: 5%; }

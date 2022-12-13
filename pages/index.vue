@@ -13,7 +13,6 @@
   <div>
     <BandCover />
     <BandAbout />
-    <BandNotice />
     <BandVideos />
     <BandPhotos />
     <BandContact />
@@ -23,7 +22,6 @@
 <script>
 import BandCover from '~/components/cover'
 import BandAbout from '~/components/about'
-import BandNotice from '~/components/notice'
 import BandVideos from '~/components/videos'
 import BandPhotos from '~/components/photos'
 import BandContact from '~/components/contact'
@@ -32,7 +30,6 @@ export default {
   components: {
     BandCover,
     BandAbout,
-    BandNotice,
     BandVideos,
     BandPhotos,
     BandContact

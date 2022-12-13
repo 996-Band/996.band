@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "nuxt": "^2.3.4"
+    "nuxt": "^2.15.8"
   },
   "dependencies": {
     "smoothscroll-polyfill": "^0.4.3"

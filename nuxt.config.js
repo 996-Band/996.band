@@ -1,4 +1,5 @@
 export default {
+  target: 'static',
   head: {
     title: '996 乐队',
     meta: [

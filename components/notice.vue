@@ -1,6 +1,6 @@
 <template>
   <BandSection class="notice">
-    <h3><a href="https://music.163.com/#/album?id=155113162" target="_blank">2022《996 乐队同名专辑》网易云音乐首发！</a></h3>
+    <h3><a href="https://music.163.com/#/artist/album?id=54708994" target="_blank">去网易云音乐查看 996 乐队最新专辑！</a></h3>
   </BandSection>
 </template>
 

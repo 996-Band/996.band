@@ -2,7 +2,7 @@
   <BandSection class="contact">
     <h2>关注我们</h2>
     <p><a class="yuque" href="https://www.yuque.com/996band" target="_blank">996 乐队官方语雀</a> | <a href="https://www.yuque.com/996band/tuqy4c" target="_blank">官方公告</a> |  <a href="https://www.yuque.com/996band/tuqy4c/zzs567" target="_blank">相关群组</a>  <br>
-    <a class="wangyi" href="https://music.163.com/#/artist?id=54708994" target="_blank">网易音乐人主页</a></p>
+    <a class="wangyi" href="https://music.163.com/#/artist?id=54708994" target="_blank">网易音乐人主页</a></p> | <a class="wangyi" href="https://music.163.com/#/artist?id=54708994" target="_blank">微信视频号</a></p>
     <!--<p><a href="https://www.getrevue.co/profile/996-band" target="_blank">点击这里订阅 996 乐队的邮件新闻，第一时间获得乐队资讯和演出信息。</a></p>-->
     <img class="logo" src="/images/996-white.png">
   </BandSection>

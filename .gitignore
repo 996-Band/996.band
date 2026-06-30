@@ -3,3 +3,4 @@ legacy
 dist
 .nuxt
 .DS_Store
+infra/

@@ -1,0 +1,19 @@
+.DS_Store
+node_modules/
+
+# Local architecture notes
+infra/
+
+# Build outputs
+dist/
+.nuxt/
+.astro/
+
+# Local media staging for future OSS/CDN workflows
+media-inbox/
+media-output/
+
+# Local environment variables
+.env
+.env.*
+!.env.example

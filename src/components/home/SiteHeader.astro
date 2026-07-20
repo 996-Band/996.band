@@ -11,9 +11,9 @@ const navItems = [
 
 <header class="site-header">
   <a class="header-brand" href="/" aria-label="返回首页" title="Home">
-    <img src="/assets/brand/996-logo-transparent.png" alt="996 Band logo" />
+    <img src="/assets/brand/996-logo-transparent.png" alt="996 Band logo" width="546" height="504" />
   </a>
-  <nav class="header-nav" aria-label="Primary navigation">
+  <nav id="primary-navigation" class="header-nav" aria-label="Primary navigation">
     {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
     <a class="header-top-link" href="#top" aria-label="返回页面顶部" title="Back to top">
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -21,7 +21,44 @@ const navItems = [
       </svg>
     </a>
   </nav>
+  <button
+    class="mobile-menu-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="primary-navigation"
+    aria-label="打开导航菜单"
+  >
+    <span></span><span></span><span></span>
+  </button>
   <div class="header-signal" aria-hidden="true">
     <span></span><span></span><span></span><span></span>
   </div>
 </header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const navigation = header?.querySelector<HTMLElement>('.header-nav');
+  const menuToggle = header?.querySelector<HTMLButtonElement>('.mobile-menu-toggle');
+
+  const setMenuOpen = (open: boolean) => {
+    if (!navigation || !menuToggle) return;
+    navigation.classList.toggle('is-open', open);
+    menuToggle.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? '关闭导航菜单' : '打开导航菜单');
+  };
+
+  menuToggle?.addEventListener('click', () => {
+    setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenuOpen(false);
+  });
+  document.addEventListener('pointerdown', (event) => {
+    if (header && !header.contains(event.target as Node)) setMenuOpen(false);
+  });
+  window.matchMedia('(min-width: 701px)').addEventListener('change', (event) => {
+    if (event.matches) setMenuOpen(false);
+  });
+</script>

@@ -14,7 +14,7 @@ const { Content } = await render(article);
 const date = article.data.date.toISOString().slice(0, 10).replaceAll('-', '.');
 ---
 
-<BaseLayout title={`${article.data.title} — 996 Band`} description={article.data.summary}>
+<BaseLayout title={`${article.data.title} — 996 Band`} description={article.data.summary} type="article">
   <SiteHeader />
   <main class="article-page">
     <a class="article-back" href="/articles">← ALL ARTICLES</a>

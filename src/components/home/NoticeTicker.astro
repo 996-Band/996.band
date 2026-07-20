@@ -3,7 +3,7 @@ interface Notice {
   title: string;
   summary: string;
   href: string;
-  startAt?: Date;
+  startAt: Date;
 }
 
 interface Props {
@@ -11,13 +11,8 @@ interface Props {
 }
 
 const { notices = [] } = Astro.props;
-const fallbackNotices: Notice[] = [
-  { title: '新专辑进入混音阶段', summary: '声音信号同步中', href: '#', startAt: new Date('2024-05-27T00:00:00Z') },
-  { title: '2024 巡演计划筹备中', summary: '现场档案更新', href: '#', startAt: new Date('2024-05-10T00:00:00Z') },
-  { title: '新单曲录制完成', summary: '代码与噪声已保存', href: '#', startAt: new Date('2024-04-12T00:00:00Z') },
-];
-const items = notices.length ? [...notices, ...fallbackNotices].slice(0, 3) : fallbackNotices;
-const formatDate = (date?: Date) => date ? date.toISOString().slice(0, 10).replaceAll('-', '.') : '2024.05.27';
+const items = notices.slice(0, 3);
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.');
 ---
 
 <section id="notice" class="notice-ticker" aria-label="Latest notice">

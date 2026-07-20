@@ -16,7 +16,12 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-const notices = (await getCollection('notices', ({ data }) => data.enabled))
+const today = new Date().toISOString().slice(0, 10);
+const notices = (await getCollection('notices', ({ data }) => (
+  data.enabled
+  && data.startAt.toISOString().slice(0, 10) <= today
+  && (!data.endAt || data.endAt.toISOString().slice(0, 10) >= today)
+)))
   .sort((a, b) => b.data.priority - a.data.priority);
 
 const photos = (await getCollection('photos'))
@@ -31,7 +36,7 @@ const albums = (await getCollection('albums', ({ data }) => data.enabled))
 
 <BaseLayout
   title="996 Band — Code on Stage"
-  description="996 Band V2 homepage prototype: black-and-white VJ LED stage, articles, albums and live archives."
+  description="996 Band official website — music, live performances, articles and stage archives from a band of front-end engineers."
 >
   <SiteHeader />
   <main>

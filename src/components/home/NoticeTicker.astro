@@ -1,0 +1,41 @@
+---
+interface Notice {
+  title: string;
+  summary: string;
+  href: string;
+  startAt?: Date;
+}
+
+interface Props {
+  notices?: Notice[];
+}
+
+const { notices = [] } = Astro.props;
+const fallbackNotices: Notice[] = [
+  { title: '新专辑进入混音阶段', summary: '声音信号同步中', href: '#', startAt: new Date('2024-05-27T00:00:00Z') },
+  { title: '2024 巡演计划筹备中', summary: '现场档案更新', href: '#', startAt: new Date('2024-05-10T00:00:00Z') },
+  { title: '新单曲录制完成', summary: '代码与噪声已保存', href: '#', startAt: new Date('2024-04-12T00:00:00Z') },
+];
+const items = notices.length ? [...notices, ...fallbackNotices].slice(0, 3) : fallbackNotices;
+const formatDate = (date?: Date) => date ? date.toISOString().slice(0, 10).replaceAll('-', '.') : '2024.05.27';
+---
+
+<section id="notice" class="notice-ticker" aria-label="Latest notice">
+  <div class="notice-inner">
+    <div class="notice-label">NOTICE</div>
+    <div class="notice-wave" aria-hidden="true"></div>
+    {items.slice(0, 3).map((notice, index) => (
+      <Fragment>
+        <a href={notice.href ?? '#'} class="notice-item">
+          <time>{formatDate(notice.startAt)}</time>
+          <span>{notice.title}</span>
+        </a>
+        {index < Math.min(items.length, 3) - 1 && <i aria-hidden="true">|</i>}
+      </Fragment>
+    ))}
+    <div class="notice-live">
+      <span class="status-dot"></span>
+      LIVE
+    </div>
+  </div>
+</section>

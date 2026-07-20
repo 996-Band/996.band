@@ -1,0 +1,55 @@
+{
+  "title": "Fun 码过来",
+  "slug": "fun-code-2017",
+  "date": "2017-06-19",
+  "summary": "996 Band 在 Fun 码过来的现场记录。",
+  "cover": {
+    "src": "/assets/photos/fun-code-2017/20170619-1.webp",
+    "thumbnail": "/assets/photos/fun-code-2017/20170619-1-thumb.webp",
+    "alt": "Fun 码过来相册封面",
+    "width": 1920,
+    "height": 1280
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/fun-code-2017/20170619-1.webp",
+      "thumbnail": "/assets/photos/fun-code-2017/20170619-1-thumb.webp",
+      "alt": "Fun 码过来现场记录 1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/fun-code-2017/20170619-2.webp",
+      "thumbnail": "/assets/photos/fun-code-2017/20170619-2-thumb.webp",
+      "alt": "Fun 码过来现场记录 2",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/fun-code-2017/20170619-3.webp",
+      "thumbnail": "/assets/photos/fun-code-2017/20170619-3-thumb.webp",
+      "alt": "Fun 码过来现场记录 3",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/fun-code-2017/20170619-4.webp",
+      "thumbnail": "/assets/photos/fun-code-2017/20170619-4-thumb.webp",
+      "alt": "Fun 码过来现场记录 4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/fun-code-2017/20170619-5.webp",
+      "thumbnail": "/assets/photos/fun-code-2017/20170619-5-thumb.webp",
+      "alt": "Fun 码过来现场记录 5",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

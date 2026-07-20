@@ -1,0 +1,23 @@
+{
+  "title": "送别勾股",
+  "slug": "farewell-gougu-2019",
+  "date": "2019-05-17",
+  "summary": "996 Band 送别勾股的纪念影像。",
+  "cover": {
+    "src": "/assets/photos/farewell-gougu-2019/20190517.webp",
+    "thumbnail": "/assets/photos/farewell-gougu-2019/20190517-thumb.webp",
+    "alt": "送别勾股相册封面",
+    "width": 1440,
+    "height": 1080
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/farewell-gougu-2019/20190517.webp",
+      "thumbnail": "/assets/photos/farewell-gougu-2019/20190517-thumb.webp",
+      "alt": "送别勾股现场记录 1",
+      "width": 1440,
+      "height": 1080
+    }
+  ]
+}

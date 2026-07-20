@@ -1,0 +1,551 @@
+---
+interface PhotoMedia {
+  type: 'image' | 'video';
+  src: string;
+  thumbnail: string;
+  poster?: string;
+  alt: string;
+}
+
+interface PhotoCollection {
+  data: {
+    title: string;
+    slug: string;
+    media: PhotoMedia[];
+  };
+}
+
+interface Props {
+  collections: PhotoCollection[];
+}
+
+const { collections } = Astro.props;
+const media = collections.flatMap((collection) => collection.data.media.map((item) => ({
+  ...item,
+  collectionTitle: collection.data.title,
+  collectionSlug: collection.data.slug,
+})));
+const serializedMedia = JSON.stringify(media).replaceAll('<', '\\u003c');
+---
+
+<script is:inline type="application/json" data-photo-browser-media set:html={serializedMedia}></script>
+
+<dialog class="photo-browser" data-photo-browser aria-label="媒体浏览器">
+  <header class="photo-browser-toolbar">
+    <div class="photo-browser-zoom" aria-label="图片缩放控制">
+      <button type="button" data-photo-zoom-out aria-label="缩小图片">−</button>
+      <output data-photo-zoom-value aria-live="off">100%</output>
+      <button type="button" data-photo-zoom-in aria-label="放大图片">+</button>
+      <button type="button" class="photo-browser-fit" data-photo-zoom-reset>FIT</button>
+    </div>
+    <span class="photo-browser-hint">SCROLL TO ZOOM · DRAG TO MOVE</span>
+  </header>
+
+  <button type="button" class="photo-browser-close" data-photo-browser-close aria-label="关闭预览">×</button>
+  <button type="button" class="photo-browser-nav photo-browser-prev" data-photo-browser-prev aria-label="上一张">
+    <svg viewBox="0 0 32 64" aria-hidden="true"><path d="M25 6 7 32l18 26" /></svg>
+  </button>
+
+  <div class="photo-browser-stage" data-photo-browser-stage>
+    <div class="photo-browser-canvas">
+      <img data-photo-browser-image alt="" draggable="false" />
+      <video data-photo-browser-video controls playsinline loop></video>
+    </div>
+  </div>
+
+  <button type="button" class="photo-browser-nav photo-browser-next" data-photo-browser-next aria-label="下一张">
+    <svg viewBox="0 0 32 64" aria-hidden="true"><path d="m7 6 18 26L7 58" /></svg>
+  </button>
+
+  <footer class="photo-browser-meta">
+    <strong data-photo-browser-collection></strong>
+    <p data-photo-browser-caption></p>
+    <span data-photo-browser-counter></span>
+  </footer>
+  <div class="photo-browser-toast" data-photo-browser-toast role="status" aria-live="polite"></div>
+</dialog>
+
+<script>
+  interface BrowserMedia {
+    type: 'image' | 'video';
+    src: string;
+    thumbnail: string;
+    poster?: string;
+    alt: string;
+    collectionTitle: string;
+    collectionSlug: string;
+  }
+
+  const browser = document.querySelector<HTMLDialogElement>('[data-photo-browser]');
+  const mediaSource = document.querySelector<HTMLScriptElement>('[data-photo-browser-media]');
+  const media: BrowserMedia[] = JSON.parse(mediaSource?.textContent || '[]');
+  const stage = browser?.querySelector<HTMLElement>('[data-photo-browser-stage]');
+  const image = browser?.querySelector<HTMLImageElement>('[data-photo-browser-image]');
+  const video = browser?.querySelector<HTMLVideoElement>('[data-photo-browser-video]');
+  const caption = browser?.querySelector<HTMLElement>('[data-photo-browser-caption]');
+  const collectionName = browser?.querySelector<HTMLElement>('[data-photo-browser-collection]');
+  const counter = browser?.querySelector<HTMLElement>('[data-photo-browser-counter]');
+  const toast = browser?.querySelector<HTMLElement>('[data-photo-browser-toast]');
+  const closeButton = browser?.querySelector<HTMLButtonElement>('[data-photo-browser-close]');
+  const previousButton = browser?.querySelector<HTMLButtonElement>('[data-photo-browser-prev]');
+  const nextButton = browser?.querySelector<HTMLButtonElement>('[data-photo-browser-next]');
+  const zoomOutButton = browser?.querySelector<HTMLButtonElement>('[data-photo-zoom-out]');
+  const zoomInButton = browser?.querySelector<HTMLButtonElement>('[data-photo-zoom-in]');
+  const zoomResetButton = browser?.querySelector<HTMLButtonElement>('[data-photo-zoom-reset]');
+  const zoomValue = browser?.querySelector<HTMLOutputElement>('[data-photo-zoom-value]');
+
+  let currentIndex = -1;
+  let scale = 1;
+  let translateX = 0;
+  let translateY = 0;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragOriginX = 0;
+  let dragOriginY = 0;
+  let dragging = false;
+  let toastTimer = 0;
+
+  const currentMedia = () => media[currentIndex];
+  const isCurrentImage = () => currentMedia()?.type === 'image';
+  const clamp = (value: number, minimum: number, maximum: number) => Math.min(maximum, Math.max(minimum, value));
+
+  const updateTransform = () => {
+    if (!image || !zoomValue) return;
+    image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+    image.classList.toggle('is-zoomed', scale > 1.001);
+    zoomValue.value = `${Math.round(scale * 100)}%`;
+  };
+
+  const resetTransform = () => {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    updateTransform();
+  };
+
+  const setScale = (nextScale: number) => {
+    if (!isCurrentImage()) return;
+    scale = clamp(nextScale, 0.5, 5);
+    if (scale <= 1) {
+      translateX = 0;
+      translateY = 0;
+    }
+    updateTransform();
+  };
+
+  const showToast = (message: string) => {
+    if (!toast) return;
+    window.clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.remove('is-visible');
+    requestAnimationFrame(() => toast.classList.add('is-visible'));
+    toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 2200);
+  };
+
+  const setZoomDisabled = (disabled: boolean) => {
+    [zoomOutButton, zoomInButton, zoomResetButton].forEach((button) => {
+      if (button) button.disabled = disabled;
+    });
+  };
+
+  const renderMedia = (index: number, announceCollection = false) => {
+    if (!browser || !image || !video || !caption || !collectionName || !counter) return;
+    const item = media[index];
+    if (!item) return;
+    const previousCollection = currentMedia()?.collectionTitle;
+    const isVideo = item.type === 'video';
+
+    video.pause();
+    video.removeAttribute('src');
+    video.removeAttribute('poster');
+    video.load();
+    image.removeAttribute('src');
+    currentIndex = index;
+    resetTransform();
+
+    image.hidden = isVideo;
+    video.hidden = !isVideo;
+    caption.textContent = item.alt;
+    collectionName.textContent = item.collectionTitle;
+    counter.textContent = `${String(index + 1).padStart(3, '0')} / ${String(media.length).padStart(3, '0')}`;
+    setZoomDisabled(isVideo);
+
+    if (isVideo) {
+      video.src = item.src;
+      video.poster = item.poster || item.thumbnail;
+      void video.play().catch(() => undefined);
+    } else {
+      image.src = item.src;
+      image.alt = item.alt;
+    }
+
+    if (announceCollection && previousCollection && previousCollection !== item.collectionTitle) {
+      showToast(`已开始浏览「${item.collectionTitle}」相册`);
+    }
+  };
+
+  const openBrowser = (index: number) => {
+    if (!browser || !media[index]) return;
+    document.body.classList.add('photo-browser-open');
+    browser.showModal();
+    renderMedia(index);
+  };
+
+  const navigate = (direction: -1 | 1) => {
+    const targetIndex = currentIndex + direction;
+    if (targetIndex < 0) {
+      showToast('已经是全部相册的第一张了');
+      return;
+    }
+    if (targetIndex >= media.length) {
+      showToast('已经是全部相册的最后一张了');
+      return;
+    }
+    renderMedia(targetIndex, true);
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-photo-browser-open]').forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      const source = trigger.dataset.photoSource;
+      const slug = trigger.dataset.photoCollection;
+      const index = source
+        ? media.findIndex((item) => item.src === source)
+        : media.findIndex((item) => item.collectionSlug === slug);
+      if (index < 0) return;
+      event.preventDefault();
+      openBrowser(index);
+    });
+  });
+
+  previousButton?.addEventListener('click', () => navigate(-1));
+  nextButton?.addEventListener('click', () => navigate(1));
+  zoomOutButton?.addEventListener('click', () => setScale(scale - 0.25));
+  zoomInButton?.addEventListener('click', () => setScale(scale + 0.25));
+  zoomResetButton?.addEventListener('click', resetTransform);
+  closeButton?.addEventListener('click', () => browser?.close());
+
+  stage?.addEventListener('wheel', (event) => {
+    if (!isCurrentImage()) return;
+    event.preventDefault();
+    setScale(scale + (event.deltaY < 0 ? 0.2 : -0.2));
+  }, { passive: false });
+
+  stage?.addEventListener('dblclick', () => {
+    if (isCurrentImage()) setScale(scale > 1.1 ? 1 : 2);
+  });
+
+  stage?.addEventListener('pointerdown', (event) => {
+    if (!isCurrentImage() || scale <= 1 || !stage) return;
+    dragging = true;
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+    dragOriginX = translateX;
+    dragOriginY = translateY;
+    stage.classList.add('is-dragging');
+    stage.setPointerCapture(event.pointerId);
+  });
+
+  stage?.addEventListener('pointermove', (event) => {
+    if (!dragging) return;
+    translateX = dragOriginX + event.clientX - dragStartX;
+    translateY = dragOriginY + event.clientY - dragStartY;
+    updateTransform();
+  });
+
+  const stopDragging = (event: PointerEvent) => {
+    if (!dragging || !stage) return;
+    dragging = false;
+    stage.classList.remove('is-dragging');
+    if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
+  };
+  stage?.addEventListener('pointerup', stopDragging);
+  stage?.addEventListener('pointercancel', stopDragging);
+
+  document.addEventListener('keydown', (event) => {
+    if (!browser?.open) return;
+    if (event.key === 'ArrowLeft') navigate(-1);
+    if (event.key === 'ArrowRight') navigate(1);
+    if (event.key === '+' || event.key === '=') setScale(scale + 0.25);
+    if (event.key === '-') setScale(scale - 0.25);
+    if (event.key === '0') resetTransform();
+  });
+
+  browser?.addEventListener('close', () => {
+    video?.pause();
+    video?.removeAttribute('src');
+    video?.removeAttribute('poster');
+    video?.load();
+    image?.removeAttribute('src');
+    resetTransform();
+    currentIndex = -1;
+    document.body.classList.remove('photo-browser-open');
+  });
+</script>
+
+<style>
+  .photo-browser {
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background: rgba(0, 0, 0, 0.96);
+    color: #fff;
+  }
+
+  .photo-browser[open] {
+    display: grid;
+    grid-template-rows: 58px minmax(0, 1fr) 58px;
+  }
+
+  .photo-browser::backdrop {
+    background: rgba(0, 0, 0, 0.94);
+  }
+
+  .photo-browser-toolbar {
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    background: rgba(4, 4, 4, 0.92);
+  }
+
+  .photo-browser-zoom {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .photo-browser-zoom button,
+  .photo-browser-zoom output {
+    display: grid;
+    place-items: center;
+    min-width: 38px;
+    height: 100%;
+    padding: 0 9px;
+    border: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .photo-browser-zoom button {
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease;
+  }
+
+  .photo-browser-zoom button:hover:not(:disabled),
+  .photo-browser-zoom button:focus-visible {
+    background: #fff;
+    color: #000;
+  }
+
+  .photo-browser-zoom button:disabled {
+    cursor: not-allowed;
+    opacity: 0.24;
+  }
+
+  .photo-browser-zoom output {
+    min-width: 58px;
+  }
+
+  .photo-browser-zoom .photo-browser-fit {
+    min-width: 48px;
+    border-right: 0;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .photo-browser-hint {
+    position: absolute;
+    left: 22px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.09em;
+    color: rgba(255, 255, 255, 0.32);
+  }
+
+  .photo-browser-stage {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.055), transparent 58%), #000;
+    cursor: default;
+    touch-action: none;
+  }
+
+  .photo-browser-stage:has(img.is-zoomed) {
+    cursor: grab;
+  }
+
+  .photo-browser-stage.is-dragging {
+    cursor: grabbing;
+  }
+
+  .photo-browser-canvas {
+    position: absolute;
+    inset: 24px 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-browser-canvas img,
+  .photo-browser-canvas video {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .photo-browser-canvas img {
+    user-select: none;
+    will-change: transform;
+  }
+
+  .photo-browser-canvas video {
+    width: min(100%, 1280px);
+  }
+
+  .photo-browser-canvas [hidden] {
+    display: none;
+  }
+
+  .photo-browser-close {
+    position: absolute;
+    z-index: 5;
+    top: 8px;
+    right: 22px;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 200;
+    cursor: pointer;
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+
+  .photo-browser-close:hover {
+    opacity: 0.65;
+    transform: rotate(8deg);
+  }
+
+  .photo-browser-nav {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 96px;
+    padding: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.24);
+    color: rgba(255, 255, 255, 0.52);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .photo-browser-nav:hover,
+  .photo-browser-nav:focus-visible {
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+  }
+
+  .photo-browser-nav svg {
+    width: 22px;
+    height: 44px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.6;
+  }
+
+  .photo-browser-prev { left: 0; }
+  .photo-browser-next { right: 0; }
+
+  .photo-browser-meta {
+    z-index: 4;
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr) minmax(120px, 1fr);
+    align-items: center;
+    gap: 20px;
+    min-height: 58px;
+    padding: 0 24px;
+    border-top: 1px dotted rgba(255, 255, 255, 0.2);
+    background: rgba(4, 4, 4, 0.94);
+    color: rgba(255, 255, 255, 0.62);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  .photo-browser-meta strong {
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.86);
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .photo-browser-meta p {
+    margin: 0;
+    text-align: center;
+  }
+
+  .photo-browser-meta > span { text-align: right; }
+
+  .photo-browser-toast {
+    position: absolute;
+    z-index: 8;
+    left: 50%;
+    bottom: 82px;
+    max-width: min(88vw, 520px);
+    padding: 11px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(8, 8, 8, 0.9);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.48);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 10px);
+    transition: opacity 220ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .photo-browser-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  :global(body.photo-browser-open) { overflow: hidden; }
+
+  @media (max-width: 640px) {
+    .photo-browser-canvas { inset: 14px 42px; }
+    .photo-browser-hint { display: none; }
+    .photo-browser-toolbar { justify-content: flex-start; padding-left: 12px; }
+    .photo-browser-zoom button,
+    .photo-browser-zoom output { min-width: 34px; padding: 0 7px; }
+    .photo-browser-zoom output { min-width: 54px; }
+    .photo-browser-close { right: 8px; }
+    .photo-browser-nav { width: 40px; height: 78px; }
+    .photo-browser-meta { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 0 12px; }
+    .photo-browser-meta p { display: none; }
+  }
+</style>

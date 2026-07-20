@@ -12,6 +12,7 @@ dist/
 # Local media staging for future OSS/CDN workflows
 media-inbox/
 media-output/
+.content-manager-uploads/
 
 # Local environment variables
 .env

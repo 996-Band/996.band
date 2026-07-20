@@ -1,0 +1,39 @@
+{
+  "title": "VueConf",
+  "slug": "vueconf-2018",
+  "date": "2018-11-24",
+  "summary": "996 Band 在 VueConf 的现场记录。",
+  "cover": {
+    "src": "/assets/photos/vueconf-2018/20181124-1.webp",
+    "thumbnail": "/assets/photos/vueconf-2018/20181124-1-thumb.webp",
+    "alt": "VueConf相册封面",
+    "width": 1920,
+    "height": 1280
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/vueconf-2018/20181124-1.webp",
+      "thumbnail": "/assets/photos/vueconf-2018/20181124-1-thumb.webp",
+      "alt": "VueConf现场记录 1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/vueconf-2018/20181124-2.webp",
+      "thumbnail": "/assets/photos/vueconf-2018/20181124-2-thumb.webp",
+      "alt": "VueConf现场记录 2",
+      "width": 1920,
+      "height": 1282
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/vueconf-2018/20181124-3.webp",
+      "thumbnail": "/assets/photos/vueconf-2018/20181124-3-thumb.webp",
+      "alt": "VueConf现场记录 3",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

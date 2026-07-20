@@ -1,0 +1,27 @@
+---
+const navItems = [
+  ['ABOUT', '/#about'],
+  ['ARTICLES', '/#articles'],
+  ['PHOTOS', '/#photos'],
+  ['ALBUMS', '/#albums'],
+  ['NOW PLAYING', '/#videos'],
+  ['CONTACT', '/#contact'],
+];
+---
+
+<header class="site-header">
+  <a class="header-brand" href="/" aria-label="返回首页" title="Home">
+    <img src="/assets/brand/996-logo-transparent.png" alt="996 Band logo" />
+  </a>
+  <nav class="header-nav" aria-label="Primary navigation">
+    {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    <a class="header-top-link" href="#top" aria-label="返回页面顶部" title="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m6 14 6-6 6 6" />
+      </svg>
+    </a>
+  </nav>
+  <div class="header-signal" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</header>

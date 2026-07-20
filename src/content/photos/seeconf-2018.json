@@ -1,0 +1,39 @@
+{
+  "title": "第一届 SEEConf 支付宝体验科技大会",
+  "slug": "seeconf-2018",
+  "date": "2018-01-06",
+  "summary": "996 Band 在第一届 SEEConf 支付宝体验科技大会的现场记录。",
+  "cover": {
+    "src": "/assets/photos/seeconf-2018/20180106-1.webp",
+    "thumbnail": "/assets/photos/seeconf-2018/20180106-1-thumb.webp",
+    "alt": "第一届 SEEConf 支付宝体验科技大会相册封面",
+    "width": 1126,
+    "height": 750
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2018/20180106-1.webp",
+      "thumbnail": "/assets/photos/seeconf-2018/20180106-1-thumb.webp",
+      "alt": "第一届 SEEConf 支付宝体验科技大会现场记录 1",
+      "width": 1126,
+      "height": 750
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2018/20180106-2.webp",
+      "thumbnail": "/assets/photos/seeconf-2018/20180106-2-thumb.webp",
+      "alt": "第一届 SEEConf 支付宝体验科技大会现场记录 2",
+      "width": 1920,
+      "height": 1440
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2018/20180106-3.webp",
+      "thumbnail": "/assets/photos/seeconf-2018/20180106-3-thumb.webp",
+      "alt": "第一届 SEEConf 支付宝体验科技大会现场记录 3",
+      "width": 1280,
+      "height": 720
+    }
+  ]
+}

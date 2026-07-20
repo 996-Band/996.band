@@ -1,0 +1,79 @@
+{
+  "title": "第十三届 D2 前端技术论坛",
+  "slug": "d2-2019-january",
+  "date": "2019-01-06",
+  "summary": "996 Band 在第十三届 D2 前端技术论坛的现场记录。",
+  "cover": {
+    "src": "/assets/photos/d2-2019-january/20190106-1.webp",
+    "thumbnail": "/assets/photos/d2-2019-january/20190106-1-thumb.webp",
+    "alt": "第十三届 D2 前端技术论坛相册封面",
+    "width": 1920,
+    "height": 1281
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-1.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-1-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 1",
+      "width": 1920,
+      "height": 1281
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-2.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-2-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 2",
+      "width": 1281,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-3.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-3-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 3",
+      "width": 1920,
+      "height": 1281
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-4.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-4-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 4",
+      "width": 1281,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-5.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-5-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 5",
+      "width": 1281,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-6.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-6-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-7.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-7-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 7",
+      "width": 1920,
+      "height": 1281
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-january/20190106-8.webp",
+      "thumbnail": "/assets/photos/d2-2019-january/20190106-8-thumb.webp",
+      "alt": "第十三届 D2 前端技术论坛现场记录 8",
+      "width": 1281,
+      "height": 1920
+    }
+  ]
+}

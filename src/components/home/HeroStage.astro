@@ -1,0 +1,215 @@
+<div class="hero-scroll-scene" data-hero-scroll-scene>
+  <section class="hero-stage" aria-labelledby="hero-title" data-hero-stage>
+    <h1 id="hero-title">996 Band</h1>
+    <img
+      class="hero-poster"
+      src="/assets/design/homepage-hero-stage-clean.png"
+      alt="996 Band 黑白 LED VJ 舞台主视觉"
+      width="1672"
+      height="941"
+      loading="eager"
+      decoding="async"
+    />
+
+    <div class="hero-led-dim" aria-hidden="true">
+      <div class="led-dim-layer led-dim-left-bars"></div>
+      <div class="led-dim-layer led-dim-right-bars"></div>
+      <div class="led-dim-layer led-dim-network-left"></div>
+      <div class="led-dim-layer led-dim-network-right"></div>
+      <div class="led-logo-dim-clean"></div>
+    </div>
+
+    <div class="hero-led-fx" aria-hidden="true">
+      <div class="led-particle-layer led-particle-left-bars"></div>
+      <div class="led-particle-layer led-particle-right-bars"></div>
+      <div class="led-particle-layer led-particle-network-left"></div>
+      <div class="led-particle-layer led-particle-network-right"></div>
+      <div class="led-logo-led-clean"></div>
+
+      <div class="led-glitch-layer led-glitch-a"></div>
+      <div class="led-glitch-layer led-glitch-b"></div>
+      <div class="led-glitch-layer led-glitch-c"></div>
+      <div class="led-glitch-layer led-glitch-d"></div>
+      <div class="led-glitch-layer led-glitch-e"></div>
+      <div class="led-glitch-layer led-glitch-f"></div>
+      <div class="led-glitch-layer led-glitch-g"></div>
+      <div class="led-glitch-layer led-glitch-h"></div>
+    </div>
+
+    <div class="hero-scroll-focus" aria-hidden="true"></div>
+    <div class="hero-scroll-logo-glow" aria-hidden="true"></div>
+    <div class="hero-scroll-logo" aria-hidden="true"></div>
+    <div class="hero-scroll-shade" aria-hidden="true"></div>
+
+    <a class="scroll-cue" href="#notice" aria-label="Scroll to notices">
+      <svg class="scroll-cue-arrow" viewBox="0 0 48 48" aria-hidden="true">
+        <path class="scroll-cue-arrow-echo" d="m16 11 8 8 8-8" />
+        <path class="scroll-cue-arrow-main" d="m11 20 13 13 13-13" />
+      </svg>
+    </a>
+  </section>
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const compactViewport = window.matchMedia('(max-width: 900px)');
+  const scene = document.querySelector<HTMLElement>('[data-hero-scroll-scene]');
+  const stage = document.querySelector<HTMLElement>('[data-hero-stage]');
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const contentLayers = document.querySelectorAll<HTMLElement>('.notice-ticker, main .section, .site-footer');
+  const depthMedia = document.querySelectorAll<HTMLElement>('main .section img');
+  const noticeInner = document.querySelector<HTMLElement>('.notice-inner');
+  const manifestoTitle = document.querySelector<HTMLElement>('.manifesto-title');
+  const manifestoCopy = document.querySelector<HTMLElement>('.manifesto-copy');
+  const manifestoPanel = document.querySelector<HTMLElement>('.manifesto-panel');
+  const articleCards = document.querySelectorAll<HTMLElement>('.article-card');
+  const albumCards = document.querySelectorAll<HTMLElement>('.album-card');
+  const videoPanel = document.querySelector<HTMLElement>('.video-panel');
+  const memberCards = document.querySelectorAll<HTMLElement>('.member-card');
+
+  if (!reduceMotion.matches) {
+    document.documentElement.classList.add('motion-ready');
+
+    contentLayers.forEach((element) => element.classList.add('scroll-content-layer'));
+    depthMedia.forEach((element) => element.classList.add('scroll-depth-media'));
+
+    let targetProgress = 0;
+    let renderedProgress = 0;
+    let frame = 0;
+
+    const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+    const easeOut = (value: number) => 1 - Math.pow(1 - value, 3);
+    const easeInOut = (value: number) => value * value * (3 - 2 * value);
+    const viewportProgress = (element: HTMLElement) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom < -140 || rect.top > window.innerHeight + 160) return null;
+      const raw = clamp((window.innerHeight * 0.86 - rect.top) / (window.innerHeight * 0.58 + rect.height * 0.42));
+      const remainingScroll = Math.max(
+        0,
+        document.documentElement.scrollHeight - (window.scrollY + window.innerHeight),
+      );
+      const endRunway = Math.min(260, window.innerHeight * 0.32);
+      const endBlend = easeInOut(clamp(1 - remainingScroll / endRunway));
+      const completed = raw + (1 - raw) * endBlend;
+      return easeInOut(completed);
+    };
+    const applyCards = (cards: NodeListOf<HTMLElement>, progress: number, distance: number, rotation: number, spread: number) => {
+      const delayStep = cards.length > 1 ? Math.min(0.13, 0.62 / (cards.length - 1)) : 0;
+      cards.forEach((card, index) => {
+        const delay = index * delayStep;
+        const delayed = clamp((progress - delay) / (1 - delay));
+        const cardProgress = easeOut(delayed);
+        const centeredIndex = index - (cards.length - 1) / 2;
+        card.style.setProperty('--story-card-x', `${(1 - cardProgress) * centeredIndex * spread}px`);
+        card.style.setProperty('--story-card-y', `${(1 - cardProgress) * (distance + index * 9)}px`);
+        card.style.setProperty('--story-card-rotate', `${(1 - cardProgress) * centeredIndex * rotation}deg`);
+        card.style.setProperty('--story-card-opacity', (0.72 + cardProgress * 0.28).toFixed(3));
+      });
+    };
+
+    const measure = () => {
+      if (scene && stage && !compactViewport.matches) {
+        const sceneRect = scene.getBoundingClientRect();
+        const pinnedTop = header?.offsetHeight ?? 0;
+        const travel = Math.max(1, scene.offsetHeight - stage.offsetHeight);
+        targetProgress = clamp((pinnedTop - sceneRect.top) / travel);
+      } else {
+        targetProgress = 0;
+      }
+    };
+
+    const paint = () => {
+      renderedProgress += (targetProgress - renderedProgress) * 0.14;
+      const progress = easeOut(renderedProgress);
+
+      if (stage) {
+        const exitProgress = clamp((progress - 0.62) / 0.38);
+        const focusProgress = clamp((progress - 0.06) / 0.94);
+        stage.style.setProperty('--hero-camera-y', '0px');
+        stage.style.setProperty('--hero-camera-scale', (1 + 0.125 * progress).toFixed(4));
+        stage.style.setProperty('--hero-surround-dim', (0.001 + 0.58 * focusProgress).toFixed(3));
+        stage.style.setProperty('--hero-logo-focus', (0.001 + 0.72 * focusProgress).toFixed(3));
+        stage.style.setProperty('--hero-logo-halo', (0.001 + 0.9 * focusProgress).toFixed(3));
+        stage.style.setProperty('--hero-shade-opacity', (0.16 * exitProgress).toFixed(3));
+        stage.style.setProperty('--hero-cue-opacity', String(clamp(1 - progress * 4.2).toFixed(3)));
+      }
+
+      const viewportCenter = window.innerHeight * 0.5;
+      contentLayers.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.bottom < -100 || rect.top > window.innerHeight + 100) return;
+        const elementCenter = rect.top + rect.height * 0.5;
+        const offset = clamp((viewportCenter - elementCenter) / window.innerHeight, -1, 1);
+        element.style.setProperty('--section-parallax-y', `${(offset * 9).toFixed(2)}px`);
+      });
+
+      depthMedia.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.bottom < -80 || rect.top > window.innerHeight + 80) return;
+        const elementCenter = rect.top + rect.height * 0.5;
+        const offset = clamp((viewportCenter - elementCenter) / window.innerHeight, -1, 1);
+        element.style.setProperty('--media-parallax-y', `${(offset * 24).toFixed(2)}px`);
+      });
+
+      if (noticeInner) {
+        const progress = viewportProgress(noticeInner);
+        if (progress !== null) {
+          noticeInner.style.setProperty('--notice-y', `${((1 - progress) * 30).toFixed(2)}px`);
+          noticeInner.style.setProperty('--notice-scale', (0.985 + progress * 0.015).toFixed(4));
+          noticeInner.style.setProperty('--notice-opacity', (0.78 + progress * 0.22).toFixed(3));
+        }
+      }
+
+      if (manifestoTitle && manifestoCopy && manifestoPanel) {
+        const progress = viewportProgress(manifestoTitle);
+        if (progress !== null) {
+          manifestoTitle.style.setProperty('--manifesto-title-x', `${(-58 * (1 - progress)).toFixed(2)}px`);
+          manifestoTitle.style.setProperty('--manifesto-title-y', `${(22 * (1 - progress)).toFixed(2)}px`);
+          manifestoCopy.style.setProperty('--manifesto-copy-x', `${(48 * (1 - progress)).toFixed(2)}px`);
+          manifestoCopy.style.setProperty('--manifesto-copy-y', `${(30 * (1 - progress)).toFixed(2)}px`);
+          manifestoPanel.style.setProperty('--manifesto-panel-y', `${(54 * (1 - progress)).toFixed(2)}px`);
+          manifestoPanel.style.setProperty('--manifesto-panel-scale', (0.9 + progress * 0.1).toFixed(3));
+        }
+      }
+
+      if (articleCards.length) {
+        const progress = viewportProgress(articleCards[0]);
+        if (progress !== null) applyCards(articleCards, progress, 64, 3.4, 22);
+      }
+
+      if (albumCards.length) {
+        const progress = viewportProgress(albumCards[0]);
+        if (progress !== null) applyCards(albumCards, progress, 76, 5.2, 30);
+      }
+
+      if (videoPanel) {
+        const progress = viewportProgress(videoPanel);
+        if (progress !== null) {
+          videoPanel.style.setProperty('--video-y', `${(58 * (1 - progress)).toFixed(2)}px`);
+          videoPanel.style.setProperty('--video-scale', (0.91 + progress * 0.09).toFixed(3));
+          videoPanel.style.setProperty('--video-opacity', (0.74 + progress * 0.26).toFixed(3));
+        }
+      }
+
+      if (memberCards.length) {
+        const progress = viewportProgress(memberCards[0]);
+        if (progress !== null) applyCards(memberCards, progress, 72, 2.8, 14);
+      }
+
+      if (Math.abs(targetProgress - renderedProgress) > 0.0005) {
+        frame = window.requestAnimationFrame(paint);
+      } else {
+        frame = 0;
+      }
+    };
+
+    const requestPaint = () => {
+      measure();
+      if (!frame) frame = window.requestAnimationFrame(paint);
+    };
+
+    window.addEventListener('scroll', requestPaint, { passive: true });
+    window.addEventListener('resize', requestPaint, { passive: true });
+    requestPaint();
+  }
+</script>

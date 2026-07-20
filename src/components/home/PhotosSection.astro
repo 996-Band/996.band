@@ -1,0 +1,74 @@
+---
+interface PhotoMedia {
+  type: 'image' | 'video';
+  src: string;
+  thumbnail: string;
+}
+
+interface PhotoCollection {
+  id: string;
+  data: {
+    title: string;
+    slug: string;
+    date?: Date;
+    summary: string;
+    cover: {
+      thumbnail: string;
+      alt: string;
+      width: number;
+      height: number;
+    };
+    media: PhotoMedia[];
+  };
+}
+
+interface Props {
+  photos: PhotoCollection[];
+}
+
+const { photos } = Astro.props;
+const mediaLabel = (media: PhotoMedia[]) => {
+  const images = media.filter((item) => item.type === 'image').length;
+  const videos = media.length - images;
+  if (!videos) return `${images} PHOTOS`;
+  return `${images} PHOTO${images === 1 ? '' : 'S'} · ${videos} VIDEO${videos === 1 ? '' : 'S'}`;
+};
+---
+
+<section id="photos" class="section albums-section">
+  <div class="section-heading">
+    <div>
+      <h2>PHOTOS</h2>
+    </div>
+    <a href="/photos" class="section-link">VIEW ALL</a>
+  </div>
+
+  <div class="album-grid">
+    {photos.map((collection, index) => (
+      <a
+        href={`/photos#${collection.data.slug}`}
+        class={`album-card album-card-${index + 1}`}
+        data-photo-browser-open
+        data-photo-collection={collection.data.slug}
+        aria-label={`浏览 ${collection.data.title} 相册`}
+      >
+        <div class="album-cover">
+          <img
+            src={collection.data.cover.thumbnail}
+            alt={collection.data.cover.alt}
+            width={collection.data.cover.width}
+            height={collection.data.cover.height}
+            loading="lazy"
+            decoding="async"
+          />
+          <span>{collection.data.date?.getFullYear() ?? 'ARCHIVE'}</span>
+        </div>
+        <div class="album-body">
+          <h3>{collection.data.title}</h3>
+          <p>{mediaLabel(collection.data.media)}</p>
+          <span class="photo-count">▣ {collection.data.media.length}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,31 @@
+{
+  "title": "第十五届 D2 前端技术论坛[线上版]",
+  "slug": "d2-2020",
+  "date": "2020-12-20",
+  "summary": "996 Band 在第十五届 D2 前端技术论坛的现场记录。",
+  "cover": {
+    "src": "/assets/photos/d2-2020/20201220-1.webp",
+    "thumbnail": "/assets/photos/d2-2020/20201220-1-thumb.webp",
+    "alt": "第十五届 D2 前端技术论坛[线上版]相册封面",
+    "width": 856,
+    "height": 474
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2020/20201220-1.webp",
+      "thumbnail": "/assets/photos/d2-2020/20201220-1-thumb.webp",
+      "alt": "第十五届 D2 前端技术论坛现场记录 1",
+      "width": 856,
+      "height": 474
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2020/20201220-2.webp",
+      "thumbnail": "/assets/photos/d2-2020/20201220-2-thumb.webp",
+      "alt": "第十五届 D2 前端技术论坛现场记录 2",
+      "width": 887,
+      "height": 1920
+    }
+  ]
+}

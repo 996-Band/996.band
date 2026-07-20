@@ -1,0 +1,62 @@
+{
+  "title": "乐队花絮",
+  "slug": "band-sideshow",
+  "summary": "996 Band 排练、演出与日常片段的幕后记录。",
+  "cover": {
+    "src": "/assets/photos/band-sideshow/sideshow-2.webp",
+    "thumbnail": "/assets/photos/band-sideshow/sideshow-2-thumb.webp",
+    "alt": "乐队花絮相册封面",
+    "width": 1280,
+    "height": 1920
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/band-sideshow/20180412-4.webp",
+      "thumbnail": "/assets/photos/band-sideshow/20180412-4-thumb.webp",
+      "alt": "乐队花絮现场记录 1",
+      "width": 1200,
+      "height": 901
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/band-sideshow/sideshow-1.webp",
+      "thumbnail": "/assets/photos/band-sideshow/sideshow-1-thumb.webp",
+      "alt": "乐队花絮现场记录 2",
+      "width": 600,
+      "height": 800
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/band-sideshow/sideshow-2.webp",
+      "thumbnail": "/assets/photos/band-sideshow/sideshow-2-thumb.webp",
+      "alt": "乐队花絮现场记录 3",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/band-sideshow/sideshow-3.webp",
+      "thumbnail": "/assets/photos/band-sideshow/sideshow-3-thumb.webp",
+      "alt": "乐队花絮现场记录 4",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/band-sideshow/sideshow-4.webp",
+      "thumbnail": "/assets/photos/band-sideshow/sideshow-4-thumb.webp",
+      "alt": "乐队花絮现场记录 5",
+      "width": 1920,
+      "height": 1281
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/band-sideshow/sideshow-5.webp",
+      "thumbnail": "/assets/photos/band-sideshow/sideshow-5-thumb.webp",
+      "alt": "乐队花絮现场记录 6",
+      "width": 1280,
+      "height": 720
+    }
+  ]
+}

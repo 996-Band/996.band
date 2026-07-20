@@ -1,0 +1,144 @@
+{
+  "title": "第二十届 D2 技术大会",
+  "slug": "d2-2026",
+  "date": "2026-03-22",
+  "location": "杭州",
+  "summary": "第二十届 D2 技术大会 996 乐队 x 万塘路 18 号乐队 演出现场",
+  "cover": {
+    "src": "/assets/photos/d2-2026/03.webp",
+    "thumbnail": "/assets/photos/d2-2026/03-thumb.webp",
+    "alt": "第二十届 D2 技术大会相册封面",
+    "width": 1280,
+    "height": 1920
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/03.webp",
+      "thumbnail": "/assets/photos/d2-2026/03-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 3",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/01.webp",
+      "thumbnail": "/assets/photos/d2-2026/01-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 1",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/02.webp",
+      "thumbnail": "/assets/photos/d2-2026/02-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 2",
+      "width": 720,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/07.webp",
+      "thumbnail": "/assets/photos/d2-2026/07-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 7",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/08.webp",
+      "thumbnail": "/assets/photos/d2-2026/08-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 8",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/12.webp",
+      "thumbnail": "/assets/photos/d2-2026/12-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 12",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/04.webp",
+      "thumbnail": "/assets/photos/d2-2026/04-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/05.webp",
+      "thumbnail": "/assets/photos/d2-2026/05-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 5",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/06.webp",
+      "thumbnail": "/assets/photos/d2-2026/06-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/15.webp",
+      "thumbnail": "/assets/photos/d2-2026/15-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 15",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/09.webp",
+      "thumbnail": "/assets/photos/d2-2026/09-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 9",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/10.webp",
+      "thumbnail": "/assets/photos/d2-2026/10-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 10",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/11.webp",
+      "thumbnail": "/assets/photos/d2-2026/11-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 11",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/14.webp",
+      "thumbnail": "/assets/photos/d2-2026/14-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 14",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/16.webp",
+      "thumbnail": "/assets/photos/d2-2026/16-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 16",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2026/13.webp",
+      "thumbnail": "/assets/photos/d2-2026/13-thumb.webp",
+      "alt": "第二十届 D2 技术大会现场记录 13",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

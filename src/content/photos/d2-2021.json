@@ -1,0 +1,103 @@
+{
+  "title": "第十六届 D2 前端技术论坛",
+  "slug": "d2-2021",
+  "date": "2021-12-18",
+  "summary": "996 Band 在第十六届 D2 前端技术论坛的现场记录。",
+  "cover": {
+    "src": "/assets/photos/d2-2021/20211218-3.webp",
+    "thumbnail": "/assets/photos/d2-2021/20211218-3-thumb.webp",
+    "alt": "第十六届 D2 前端技术论坛相册封面",
+    "width": 1200,
+    "height": 900
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-1.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-1-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 1",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-2.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-2-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 2",
+      "width": 1920,
+      "height": 1440
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-3.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-3-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 3",
+      "width": 1200,
+      "height": 900
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-4.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-4-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 4",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-5.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-5-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 5",
+      "width": 1920,
+      "height": 1430
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-6.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-6-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-7.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-7-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 7",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-8.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-8-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 8",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-9.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-9-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 9",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-10.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-10-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 10",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2021/20211218-11.webp",
+      "thumbnail": "/assets/photos/d2-2021/20211218-11-thumb.webp",
+      "alt": "第十六届 D2 前端技术论坛现场记录 11",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

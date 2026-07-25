@@ -29,9 +29,11 @@ const elements = {
   toast: document.querySelector('[data-toast]'),
   build: document.querySelector('[data-build]'),
   newButton: document.querySelector('[data-new]'),
+  mediaMode: document.querySelector('[data-media-mode]'),
 };
 
 let content = { photos: [], notices: [], articles: [], albums: [] };
+let mediaStatus = { mode: 'local', assetUrls: {} };
 let section = 'photos';
 let selectedSlug = '';
 let creating = false;
@@ -52,6 +54,7 @@ const slugify = (value = '') => String(value)
 const formatDate = (value) => value ? String(value).slice(0, 10) : '';
 const naturalCompare = (a, b) => a.localeCompare(b, 'zh-CN', { numeric: true });
 const clone = (value) => JSON.parse(JSON.stringify(value));
+const displayAssetUrl = (value = '') => mediaStatus.assetUrls?.[value] || value;
 
 const showToast = (message, error = false) => {
   clearTimeout(toastTimer);
@@ -80,7 +83,18 @@ const api = async (url, options = {}) => {
 
 const refresh = async ({ keepSelection = true } = {}) => {
   setStatus('正在读取内容…', true);
-  content = await api('/api/content');
+  [content, mediaStatus] = await Promise.all([
+    api('/api/content'),
+    api('/api/media-status'),
+  ]);
+  const mediaModeLabel = mediaStatus.mode === 'cdn'
+    ? `CDN · ${mediaStatus.totalAssets} ASSETS`
+    : mediaStatus.ossConfigured
+      ? `OSS READY · LOCAL VIEW`
+      : 'LOCAL ASSETS';
+  elements.mediaMode.querySelector('b').textContent = mediaModeLabel;
+  elements.mediaMode.classList.toggle('is-cdn', mediaStatus.mode === 'cdn');
+  elements.mediaMode.classList.toggle('is-pending', mediaStatus.mode !== 'cdn' && mediaStatus.ossConfigured);
   if (!keepSelection) selectedSlug = '';
   document.querySelectorAll('[data-count]').forEach((node) => {
     node.textContent = content[node.dataset.count]?.length || 0;
@@ -102,7 +116,7 @@ const itemMeta = (item) => {
 
 const itemThumb = (item) => {
   const source = section === 'photos' ? item.cover?.thumbnail : section === 'albums' ? item.cover?.src : '';
-  if (source) return `<span class="list-thumb"><img src="${escapeHtml(source)}" alt="" /></span>`;
+  if (source) return `<span class="list-thumb"><img src="${escapeHtml(displayAssetUrl(source))}" alt="" /></span>`;
   return `<span class="list-thumb">${section === 'articles' ? 'MD' : section === 'notices' ? '!' : '///'}</span>`;
 };
 
@@ -327,7 +341,7 @@ const renderPhotoEditor = (item) => {
       <div class="media-grid">
         ${draft.media.map((media, index) => `
           <div class="media-card ${draft.cover.thumbnail === media.thumbnail ? 'is-cover' : ''}">
-            <img src="${escapeHtml(media.thumbnail)}" alt="${escapeHtml(media.alt)}" />
+            <img src="${escapeHtml(displayAssetUrl(media.thumbnail))}" alt="${escapeHtml(media.alt)}" />
             <div class="media-actions">
               <button type="button" data-media-cover="${index}" title="设为封面">C</button>
               <button type="button" data-media-up="${index}" title="向前移动">←</button>
@@ -560,7 +574,7 @@ const renderAlbumEditor = (item, isNew = false) => {
           <label>${isNew ? '封面图片 *' : '更换封面（不选择则保留）'}</label>
           <label class="drop-zone">
             <input name="cover" type="file" accept="image/*" ${isNew ? 'required' : ''} />
-            ${item.cover?.src ? `<img src="${escapeHtml(item.cover.src)}" alt="" style="width:120px;height:72px;object-fit:cover;margin-bottom:10px;filter:grayscale(1)" />` : ''}
+            ${item.cover?.src ? `<img src="${escapeHtml(displayAssetUrl(item.cover.src))}" alt="" style="width:120px;height:72px;object-fit:cover;margin-bottom:10px;filter:grayscale(1)" />` : ''}
             <strong data-cover-label>${item.cover ? '点击选择新封面' : '点击选择封面图片'}</strong>
             <span>自动转换为 WebP</span>
           </label>

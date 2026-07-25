@@ -1,4 +1,6 @@
 ---
+import { assetUrl } from '../../lib/assets';
+
 interface Article {
   id: string;
   data: {
@@ -19,7 +21,7 @@ const thumbnails = [
   '/assets/design/article-signal-01.png',
   '/assets/design/article-signal-02.png',
   '/assets/design/article-signal-03.png',
-];
+].map(assetUrl);
 ---
 
 <section id="articles" class="section articles-section">

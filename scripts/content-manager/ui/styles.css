@@ -89,6 +89,9 @@ a { color: inherit; text-decoration: none; }
   font-size: 9px;
   letter-spacing: .12em;
 }
+.local-badge b { font: inherit; font-weight: 400; }
+.local-badge.is-cdn span { background: #69c8ff; box-shadow: 0 0 10px rgba(105,200,255,.7); }
+.local-badge.is-pending span { background: #ffd84a; box-shadow: 0 0 10px rgba(255,216,74,.65); }
 .local-badge span, .status-light { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px rgba(73,255,128,.7); }
 
 .workspace { min-width: 0; }

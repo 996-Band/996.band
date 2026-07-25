@@ -1,4 +1,6 @@
 ---
+import { assetUrl } from '../../lib/assets';
+
 const navItems = [
   ['ABOUT', '/#about'],
   ['ARTICLES', '/#articles'],
@@ -11,7 +13,7 @@ const navItems = [
 
 <header class="site-header">
   <a class="header-brand" href="/" aria-label="返回首页" title="Home">
-    <img src="/assets/brand/996-logo-transparent.png" alt="996 Band logo" width="546" height="504" />
+    <img src={assetUrl('/assets/brand/996-logo-transparent.png')} alt="996 Band logo" width="546" height="504" />
   </a>
   <nav id="primary-navigation" class="header-nav" aria-label="Primary navigation">
     {navItems.map(([label, href]) => <a href={href}>{label}</a>)}

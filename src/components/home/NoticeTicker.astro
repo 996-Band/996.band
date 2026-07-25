@@ -21,7 +21,14 @@ const formatDate = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-
     <div class="notice-wave" aria-hidden="true"></div>
     {items.slice(0, 3).map((notice, index) => (
       <Fragment>
-        <a href={notice.href ?? '#'} class="notice-item">
+        <a
+          href={notice.href ?? '#'}
+          class:list={[
+            'notice-item',
+            index === 0 && 'notice-item-primary',
+            index === 1 && 'notice-item-secondary',
+          ]}
+        >
           <time>{formatDate(notice.startAt)}</time>
           <span>{notice.title}</span>
         </a>

@@ -289,7 +289,7 @@ img {
 }
 
 .led-dim-layer {
-  background-image: url("/assets/design/homepage-hero-stage-clean.webp");
+  background-image: var(--hero-stage-image);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -297,7 +297,7 @@ img {
 }
 
 .led-particle-layer {
-  background-image: url("/assets/design/homepage-hero-stage-clean.webp");
+  background-image: var(--hero-stage-image);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -408,11 +408,11 @@ img {
 
 .led-logo-dim-clean {
   background: #000;
-  -webkit-mask-image: url("/assets/design/homepage-hero-logo-led-only.png");
+  -webkit-mask-image: var(--hero-logo-image);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center center;
   -webkit-mask-size: cover;
-  mask-image: url("/assets/design/homepage-hero-logo-led-only.png");
+  mask-image: var(--hero-logo-image);
   mask-repeat: no-repeat;
   mask-position: center center;
   mask-size: cover;
@@ -420,7 +420,7 @@ img {
 }
 
 .led-logo-led-clean {
-  background-image: url("/assets/design/homepage-hero-logo-led-only.png");
+  background-image: var(--hero-logo-image);
   filter: brightness(1.36) contrast(1.06) drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
   animation: ledLogoParticleBreath 1.9s ease-in-out infinite;
 }
@@ -432,7 +432,7 @@ img {
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  background-image: url("/assets/design/homepage-hero-stage-clean.webp");
+  background-image: var(--hero-stage-image);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -512,7 +512,7 @@ img {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: url("/assets/design/homepage-hero-logo-led-only.png");
+  background-image: var(--hero-logo-image);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1277,15 +1277,23 @@ img {
   padding: 18px clamp(16px, 4vw, 46px);
 }
 
-.music-player {
+.music-player-stack {
   position: relative;
   z-index: 2;
-  display: block;
   width: min(100%, 620px);
+}
+
+.music-player {
+  display: block;
+  width: 100%;
   height: 86px;
   border: 0;
   filter: grayscale(1) contrast(1.16) invert(1);
   opacity: 0.88;
+}
+
+.music-player-fallback {
+  display: none;
 }
 
 .player-cover {
@@ -2068,7 +2076,7 @@ a.footer-media-item:hover strong,
   }
 
   .notice-inner {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto minmax(0, 1fr);
     gap: 0;
   }
 
@@ -2077,6 +2085,24 @@ a.footer-media-item:hover strong,
   .notice-item:nth-of-type(n + 3),
   .notice-live {
     display: none;
+  }
+
+  .notice-item-primary {
+    min-width: 0;
+  }
+
+  .notice-item-primary span {
+    max-width: none;
+  }
+
+  .notice-item-secondary {
+    min-width: 0;
+    overflow: hidden;
+    opacity: 0.58;
+  }
+
+  .notice-item-secondary span {
+    min-width: 0;
   }
 
   .manifesto-grid,
@@ -2118,9 +2144,24 @@ a.footer-media-item:hover strong,
     min-height: 320px;
   }
 
+  .notice-label {
+    padding: 0 10px;
+    font-size: 18px;
+  }
+
   .notice-item {
-    padding: 0 12px;
-    gap: 10px;
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .notice-item-secondary {
+    padding-right: 0;
+    padding-left: 8px;
+    gap: 0;
+  }
+
+  .notice-item-secondary time {
+    display: none;
   }
 
   .manifesto-title h2 {
@@ -2136,7 +2177,34 @@ a.footer-media-item:hover strong,
   }
 }
 
+@media (max-width: 360px) {
+  .notice-item-primary time {
+    display: none;
+  }
+}
+
 @media (max-width: 700px) {
+  .video-panel-embed {
+    padding-bottom: 14px;
+  }
+
+  .music-player-fallback {
+    display: inline-flex;
+    align-items: center;
+    margin: 9px 0 0 10px;
+    gap: 7px;
+    color: rgba(244, 242, 234, 0.52);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    transition: color 180ms ease;
+  }
+
+  .music-player-fallback:active,
+  .music-player-fallback:focus-visible {
+    color: #fff;
+  }
+
   .site-header {
     grid-template-columns: auto 1fr auto;
   }

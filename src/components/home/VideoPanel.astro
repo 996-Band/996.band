@@ -3,14 +3,24 @@
     <h2>NOW PLAYING</h2>
   </div>
   <div class="video-panel video-panel-embed">
-    <iframe
-      class="music-player"
-      title="996 Band 网易云音乐播放器"
-      width="100%"
-      height="86"
-      src="https://music.163.com/outchain/player?type=2&id=2010323029&auto=0&height=66"
-      allow="encrypted-media"
-      loading="lazy"
-    ></iframe>
+    <div class="music-player-stack">
+      <iframe
+        class="music-player"
+        title="996 Band 网易云音乐播放器"
+        width="100%"
+        height="86"
+        src="https://music.163.com/m/outchain/player?type=2&id=2010323029&auto=0&height=66"
+        allow="autoplay; encrypted-media"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+      <a
+        class="music-player-fallback"
+        href="https://music.163.com/song?id=2010323029"
+        target="_blank"
+        rel="noreferrer"
+      >
+        OPEN IN NETEASE MUSIC <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </div>
 </section>

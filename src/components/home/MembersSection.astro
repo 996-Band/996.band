@@ -1,4 +1,6 @@
 ---
+import { assetUrl } from '../../lib/assets';
+
 interface AlbumEntry {
   data: {
     title: string;
@@ -29,7 +31,7 @@ const { albums } = Astro.props;
       const content = (
         <>
           <img
-            src={album.data.cover.src}
+            src={assetUrl(album.data.cover.src)}
             alt={album.data.cover.alt}
             width={album.data.cover.width}
             height={album.data.cover.height}

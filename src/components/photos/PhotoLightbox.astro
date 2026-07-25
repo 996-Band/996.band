@@ -1,4 +1,6 @@
 ---
+import { resolvePhotoMedia } from '../../lib/assets';
+
 interface PhotoMedia {
   type: 'image' | 'video';
   src: string;
@@ -21,7 +23,7 @@ interface Props {
 
 const { collections } = Astro.props;
 const media = collections.flatMap((collection) => collection.data.media.map((item) => ({
-  ...item,
+  ...resolvePhotoMedia(item),
   collectionTitle: collection.data.title,
   collectionSlug: collection.data.slug,
 })));

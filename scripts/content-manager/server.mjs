@@ -18,7 +18,18 @@ import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import {
+  getCdnUrl,
+  getMediaConfig,
+  loadLocalEnvironment,
+  manifestPath,
+} from '../media/common.mjs';
+import {
+  publishGeneratedAssets,
+  refreshMediaManifest,
+} from '../media/oss.mjs';
 
+await loadLocalEnvironment();
 const execFileAsync = promisify(execFile);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const uiRoot = path.join(repoRoot, 'scripts/content-manager/ui');
@@ -38,6 +49,7 @@ const isSupportedMediaUpload = (file) => {
 };
 
 let buildRunning = false;
+const mediaConfig = getMediaConfig();
 
 class HttpError extends Error {
   constructor(status, message) {
@@ -174,6 +186,31 @@ const getContentState = async () => {
   };
 };
 
+const getMediaStatus = async () => {
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  const publicBaseUrl = mediaConfig.publicAssetBaseUrl;
+  const assetUrls = publicBaseUrl
+    ? Object.fromEntries(Object.entries(manifest.assets).map(([localUrl, asset]) => [
+      localUrl,
+      getCdnUrl(publicBaseUrl, asset.objectKey),
+    ]))
+    : {};
+  return {
+    mode: publicBaseUrl ? 'cdn' : 'local',
+    cdnBaseUrl: mediaConfig.cdnBaseUrl,
+    uploadEnabled: mediaConfig.uploadEnabled,
+    ossConfigured: Boolean(
+      mediaConfig.region
+      && mediaConfig.bucket
+      && mediaConfig.accessKeyId
+      && mediaConfig.accessKeySecret
+    ),
+    manifestVersion: manifest.version,
+    totalAssets: manifest.totalAssets,
+    assetUrls,
+  };
+};
+
 const uploadDirectory = (uploadId) => path.join(uploadRoot, assertUploadId(uploadId));
 const createUpload = async () => {
   const uploadId = randomUUID();
@@ -247,6 +284,18 @@ const createVideoAssets = async (input, outputDirectory, stem) => {
   return { videoName, posterName, thumbnailName, width: posterResult.width, height: posterResult.height };
 };
 
+const collectGeneratedAssets = (media, directory) => {
+  const urls = new Set(
+    media
+      .flatMap((item) => [item.src, item.thumbnail, item.poster])
+      .filter(Boolean),
+  );
+  return [...urls].map((localUrl) => ({
+    localUrl,
+    file: path.join(directory, path.basename(localUrl)),
+  }));
+};
+
 const processPhotoUpload = async (payload) => {
   const slug = assertSlug(payload.slug);
   const configPath = path.join(contentRoot, 'photos', `${slug}.json`);
@@ -312,8 +361,10 @@ const processPhotoUpload = async (payload) => {
       },
       media: cleanMedia,
     };
+    await publishGeneratedAssets(collectGeneratedAssets(cleanMedia, stagingDirectory));
     await rename(stagingDirectory, finalDirectory);
     await writeJson(configPath, entry);
+    await refreshMediaManifest();
     return entry;
   } catch (error) {
     await rm(stagingDirectory, { recursive: true, force: true });
@@ -345,11 +396,6 @@ const appendPhotoImage = async (slug, payload) => {
   try {
     const input = await getUploadedPath(payload.uploadId, payload.file.storedName);
     const result = await createImageAssets(input, stagingDirectory, stem);
-    for (const name of [result.fullName, result.thumbnailName]) {
-      const destination = path.join(finalDirectory, name);
-      await rename(path.join(stagingDirectory, name), destination);
-      movedAssets.push(destination);
-    }
     const media = {
       type: 'image',
       src: `/assets/photos/${slug}/${result.fullName}`,
@@ -358,8 +404,15 @@ const appendPhotoImage = async (slug, payload) => {
       width: result.width,
       height: result.height,
     };
+    await publishGeneratedAssets(collectGeneratedAssets([media], stagingDirectory));
+    for (const name of [result.fullName, result.thumbnailName]) {
+      const destination = path.join(finalDirectory, name);
+      await rename(path.join(stagingDirectory, name), destination);
+      movedAssets.push(destination);
+    }
     const updated = { ...current, media: [...current.media, media] };
     await writeJson(target, updated);
+    await refreshMediaManifest();
     return updated;
   } catch (error) {
     await Promise.all(movedAssets.map((asset) => rm(asset, { force: true })));
@@ -413,6 +466,7 @@ const updatePhoto = async (slug, payload) => {
   await Promise.all([...removedAssets]
     .filter((asset) => asset.startsWith(albumAssetPrefix))
     .map((asset) => rm(path.join(albumDirectory, path.basename(asset)), { force: true })));
+  await refreshMediaManifest();
   return updated;
 };
 
@@ -420,6 +474,7 @@ const deletePhoto = async (slug) => {
   assertSlug(slug);
   await rm(path.join(contentRoot, 'photos', `${slug}.json`), { force: true });
   await rm(path.join(publicRoot, 'assets/photos', slug), { recursive: true, force: true });
+  await refreshMediaManifest();
 };
 
 const normalizeNotice = (payload, slug) => ({
@@ -464,10 +519,16 @@ const processAlbumCover = async (slug, uploadId, storedName, title) => {
       .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
       .webp({ quality: 84, effort: 5 })
       .toFile(path.join(staging, 'cover.webp'));
+    const src = `/assets/albums/${slug}/cover.webp`;
+    await publishGeneratedAssets([{
+      localUrl: src,
+      file: path.join(staging, 'cover.webp'),
+    }]);
     await rm(directory, { recursive: true, force: true });
     await rename(staging, directory);
+    await refreshMediaManifest();
     return {
-      src: `/assets/albums/${slug}/cover.webp`,
+      src,
       alt: `${title} cover`,
       width: result.width,
       height: result.height,
@@ -552,6 +613,7 @@ const routeApi = async (request, response, url) => {
   const segments = url.pathname.split('/').filter(Boolean);
 
   if (method === 'GET' && url.pathname === '/api/content') return json(response, 200, await getContentState());
+  if (method === 'GET' && url.pathname === '/api/media-status') return json(response, 200, await getMediaStatus());
   if (method === 'POST' && url.pathname === '/api/uploads') return json(response, 201, { uploadId: await createUpload() });
   if (method === 'PUT' && segments[1] === 'uploads' && segments.length === 4) {
     return json(response, 201, await storeUpload(request, segments[2], Number(segments[3])));
@@ -606,6 +668,7 @@ const routeApi = async (request, response, url) => {
       const slug = assertSlug(segments[2]);
       await rm(path.join(contentRoot, 'albums', `${slug}.json`), { force: true });
       await rm(path.join(publicRoot, 'assets/albums', slug), { recursive: true, force: true });
+      await refreshMediaManifest();
       return json(response, 200, { ok: true });
     }
   }

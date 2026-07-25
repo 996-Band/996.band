@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/home/SiteHeader.astro';
 import SiteFooter from '../../components/home/SiteFooter.astro';
 import PhotoLightbox from '../../components/photos/PhotoLightbox.astro';
+import { assetUrl } from '../../lib/assets';
 
 const collections = (await getCollection('photos'))
   .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
@@ -46,11 +47,11 @@ const formatDate = (date?: Date) => date
                 class="photo-gallery-item"
                 type="button"
                 data-photo-browser-open
-                data-photo-source={item.src}
+                data-photo-source={assetUrl(item.src)}
                 aria-label={`打开 ${item.alt}`}
               >
                 <img
-                  src={item.thumbnail}
+                  src={assetUrl(item.thumbnail)}
                   alt={item.alt}
                   width={item.width}
                   height={item.height}

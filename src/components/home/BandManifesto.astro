@@ -1,3 +1,7 @@
+---
+import { assetUrl } from '../../lib/assets';
+---
+
 <section id="about" class="section manifesto-section">
   <div class="manifesto-grid">
     <div class="manifesto-title">
@@ -38,7 +42,7 @@ We Advocate Anti-996.</pre>
       </div>
     </div>
     <aside class="manifesto-panel" aria-label="Band signal panel">
-      <img src="/assets/design/about-band-group-bw.jpg" alt="996 乐队成员与乐器合影" loading="lazy" />
+      <img src={assetUrl('/assets/design/about-band-group-bw.jpg')} alt="996 乐队成员与乐器合影" loading="lazy" />
     </aside>
   </div>
 </section>

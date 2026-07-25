@@ -1,0 +1,47 @@
+{
+  "title": "第十四届 D2 前端技术论坛",
+  "slug": "d2-2019-december",
+  "date": "2019-12-14",
+  "summary": "996 Band 在第十四届 D2 前端技术论坛的现场记录。",
+  "cover": {
+    "src": "/assets/photos/d2-2019-december/20191214-1.webp",
+    "thumbnail": "/assets/photos/d2-2019-december/20191214-1-thumb.webp",
+    "alt": "第十四届 D2 前端技术论坛相册封面",
+    "width": 1620,
+    "height": 1080
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-december/20191214-1.webp",
+      "thumbnail": "/assets/photos/d2-2019-december/20191214-1-thumb.webp",
+      "alt": "第十四届 D2 前端技术论坛现场记录 1",
+      "width": 1620,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-december/20191214-2.webp",
+      "thumbnail": "/assets/photos/d2-2019-december/20191214-2-thumb.webp",
+      "alt": "第十四届 D2 前端技术论坛现场记录 2",
+      "width": 1620,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-december/20191214-3.webp",
+      "thumbnail": "/assets/photos/d2-2019-december/20191214-3-thumb.webp",
+      "alt": "第十四届 D2 前端技术论坛现场记录 3",
+      "width": 1620,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2019-december/20191214-4.webp",
+      "thumbnail": "/assets/photos/d2-2019-december/20191214-4-thumb.webp",
+      "alt": "第十四届 D2 前端技术论坛现场记录 4",
+      "width": 1620,
+      "height": 1080
+    }
+  ]
+}

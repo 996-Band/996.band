@@ -1,0 +1,16 @@
+{
+  "title": "996 乐队同名专辑",
+  "slug": "release-04",
+  "type": "album",
+  "date": "2022-12-17",
+  "summary": "996 乐队首张同名专辑",
+  "href": "https://music.163.com/#/album?id=155113162",
+  "enabled": true,
+  "priority": 100,
+  "cover": {
+    "src": "/assets/albums/release-04/cover.webp",
+    "alt": "996 同名专辑 cover",
+    "width": 1080,
+    "height": 1080
+  }
+}

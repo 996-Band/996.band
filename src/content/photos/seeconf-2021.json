@@ -1,0 +1,56 @@
+{
+  "title": "2021 SEE Conf",
+  "slug": "seeconf-2021",
+  "date": "2021-01-09",
+  "location": "杭州",
+  "summary": "一次关于体验技术、现场噪声和程序员幽默的回忆。",
+  "cover": {
+    "src": "/assets/photos/seeconf-2021/20210109-2.webp",
+    "thumbnail": "/assets/photos/seeconf-2021/20210109-2-thumb.webp",
+    "alt": "2021 SEE Conf相册封面",
+    "width": 1620,
+    "height": 1080
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2021/20210109-1.webp",
+      "thumbnail": "/assets/photos/seeconf-2021/20210109-1-thumb.webp",
+      "alt": "SEE Conf 2021现场记录 1",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2021/20210109-2.webp",
+      "thumbnail": "/assets/photos/seeconf-2021/20210109-2-thumb.webp",
+      "alt": "SEE Conf 2021现场记录 2",
+      "width": 1620,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2021/20210109-3.webp",
+      "thumbnail": "/assets/photos/seeconf-2021/20210109-3-thumb.webp",
+      "alt": "SEE Conf 2021现场记录 3",
+      "width": 1620,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2021/20210109-4.webp",
+      "thumbnail": "/assets/photos/seeconf-2021/20210109-4-thumb.webp",
+      "alt": "SEE Conf 2021现场记录 4",
+      "width": 1620,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/seeconf-2021/20210109-5.webp",
+      "thumbnail": "/assets/photos/seeconf-2021/20210109-5-thumb.webp",
+      "alt": "SEE Conf 2021现场记录 5",
+      "width": 1200,
+      "height": 800
+    }
+  ]
+}

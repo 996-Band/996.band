@@ -1,0 +1,16 @@
+{
+  "title": "天使",
+  "slug": "release-03",
+  "type": "single",
+  "date": "2023-09-28",
+  "summary": "",
+  "href": "https://music.163.com/#/album?id=175682114",
+  "enabled": true,
+  "priority": 200,
+  "cover": {
+    "src": "/assets/albums/release-03/cover.webp",
+    "alt": "天使 cover",
+    "width": 800,
+    "height": 800
+  }
+}

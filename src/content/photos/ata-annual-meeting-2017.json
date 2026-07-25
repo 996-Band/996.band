@@ -1,0 +1,31 @@
+{
+  "title": "ATA 年会",
+  "slug": "ata-annual-meeting-2017",
+  "date": "2017-02-22",
+  "summary": "996 Band 在 ATA 年会的现场记录。",
+  "cover": {
+    "src": "/assets/photos/ata-annual-meeting-2017/20170222-1.webp",
+    "thumbnail": "/assets/photos/ata-annual-meeting-2017/20170222-1-thumb.webp",
+    "alt": "ATA 年会相册封面",
+    "width": 1008,
+    "height": 756
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/ata-annual-meeting-2017/20170222-1.webp",
+      "thumbnail": "/assets/photos/ata-annual-meeting-2017/20170222-1-thumb.webp",
+      "alt": "ATA 年会现场记录 1",
+      "width": 1008,
+      "height": 756
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/ata-annual-meeting-2017/20170222-2.webp",
+      "thumbnail": "/assets/photos/ata-annual-meeting-2017/20170222-2-thumb.webp",
+      "alt": "ATA 年会现场记录 2",
+      "width": 1008,
+      "height": 756
+    }
+  ]
+}

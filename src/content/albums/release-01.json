@@ -1,0 +1,16 @@
+{
+  "title": "Coming Soon...",
+  "slug": "release-01",
+  "type": "single",
+  "date": "2028-01-01",
+  "summary": "",
+  "href": "",
+  "enabled": true,
+  "priority": 400,
+  "cover": {
+    "src": "/assets/design/member-drums.png",
+    "alt": "RELEASE 01 cover",
+    "width": 300,
+    "height": 164
+  }
+}

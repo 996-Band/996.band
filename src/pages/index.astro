@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/home/SiteHeader.astro';
+import HeroStage from '../components/home/HeroStage.astro';
+import NoticeTicker from '../components/home/NoticeTicker.astro';
+import BandManifesto from '../components/home/BandManifesto.astro';
+import ArticlesSection from '../components/home/ArticlesSection.astro';
+import PhotosSection from '../components/home/PhotosSection.astro';
+import VideoPanel from '../components/home/VideoPanel.astro';
+import MembersSection from '../components/home/MembersSection.astro';
+import SiteFooter from '../components/home/SiteFooter.astro';
+import PhotoLightbox from '../components/photos/PhotoLightbox.astro';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const today = new Date().toISOString().slice(0, 10);
+const notices = (await getCollection('notices', ({ data }) => (
+  data.enabled
+  && data.startAt.toISOString().slice(0, 10) <= today
+  && (!data.endAt || data.endAt.toISOString().slice(0, 10) >= today)
+)))
+  .sort((a, b) => b.data.priority - a.data.priority);
+
+const photos = (await getCollection('photos'))
+  .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+const featuredPhotos = photos.slice(0, 9);
+
+const albums = (await getCollection('albums', ({ data }) => data.enabled))
+  .sort((a, b) => b.data.priority - a.data.priority)
+  .slice(0, 4);
+
+---
+
+<BaseLayout
+  title="996 Band — Code on Stage"
+  description="996 Band official website — music, live performances, articles and stage archives from a band of front-end engineers."
+>
+  <SiteHeader />
+  <main>
+    <HeroStage />
+    <NoticeTicker notices={notices.slice(0, 3).map((notice) => notice.data)} />
+    <BandManifesto />
+    <ArticlesSection articles={articles} />
+    <PhotosSection photos={featuredPhotos} />
+    <MembersSection albums={albums} />
+    <VideoPanel />
+  </main>
+  <SiteFooter />
+  <PhotoLightbox collections={photos} />
+</BaseLayout>

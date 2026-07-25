@@ -1,6 +1,20 @@
-node_modules
-legacy
-dist
-.nuxt
 .DS_Store
+node_modules/
+
+# Local architecture notes
 infra/
+
+# Build outputs
+dist/
+.nuxt/
+.astro/
+
+# Local media staging for future OSS/CDN workflows
+media-inbox/
+media-output/
+.content-manager-uploads/
+
+# Local environment variables
+.env
+.env.*
+!.env.example

@@ -1,0 +1,247 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/home/SiteHeader.astro';
+import SiteFooter from '../../components/home/SiteFooter.astro';
+import PhotoLightbox from '../../components/photos/PhotoLightbox.astro';
+import { assetUrl } from '../../lib/assets';
+
+const collections = (await getCollection('photos'))
+  .sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0));
+const totalMedia = collections.reduce((total, collection) => total + collection.data.media.length, 0);
+const formatDate = (date?: Date) => date
+  ? date.toISOString().slice(0, 10).replaceAll('-', '.')
+  : 'UNDATED ARCHIVE';
+---
+
+<BaseLayout
+  title="Photos — 996 Band"
+  description="996 Band live photos, videos and stage memories from 2017 to now."
+>
+  <SiteHeader />
+  <main class="photos-archive">
+    <header class="photos-archive-hero">
+      <a href="/#photos" class="archive-back">← BACK TO HOME</a>
+      <p>LIVE SIGNAL ARCHIVE / 2017—NOW</p>
+      <h1>PHOTOS</h1>
+      <div class="archive-summary">
+        <span>{String(collections.length).padStart(2, '0')} COLLECTIONS</span>
+        <span>{String(totalMedia).padStart(3, '0')} MEDIA FILES</span>
+      </div>
+    </header>
+
+    <div class="photo-collections">
+      {collections.map((collection) => (
+        <section id={collection.data.slug} class="photo-collection">
+          <header class="photo-collection-heading">
+            <div>
+              <p>{formatDate(collection.data.date)}{collection.data.location ? ` / ${collection.data.location}` : ''}</p>
+              <h2>{collection.data.title}</h2>
+            </div>
+            <span>{String(collection.data.media.length).padStart(2, '0')} / MEDIA</span>
+          </header>
+          <p class="photo-collection-summary">{collection.data.summary}</p>
+          <div class="photo-gallery">
+            {collection.data.media.map((item, index) => (
+              <button
+                class="photo-gallery-item"
+                type="button"
+                data-photo-browser-open
+                data-photo-source={assetUrl(item.src)}
+                aria-label={`打开 ${item.alt}`}
+              >
+                <img
+                  src={assetUrl(item.thumbnail)}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="photo-gallery-index">{String(index + 1).padStart(2, '0')}</span>
+                {item.type === 'video' && <span class="photo-gallery-video">PLAY ▶</span>}
+              </button>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+
+  <SiteFooter />
+  <PhotoLightbox collections={collections} />
+</BaseLayout>
+
+<style>
+  .photos-archive {
+    width: var(--page);
+    margin: 0 auto;
+    padding: clamp(52px, 8vw, 110px) 0 40px;
+  }
+
+  .photos-archive-hero {
+    position: relative;
+    min-height: 330px;
+    padding: 26px 0 46px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.24);
+  }
+
+  .photos-archive-hero::after {
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    width: min(42vw, 560px);
+    height: 80px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.45px) 0 0 / 8px 8px;
+    clip-path: polygon(0 48%, 8% 48%, 8% 28%, 15% 28%, 15% 66%, 23% 66%, 23% 12%, 31% 12%, 31% 56%, 40% 56%, 40% 34%, 50% 34%, 50% 78%, 60% 78%, 60% 21%, 70% 21%, 70% 62%, 80% 62%, 80% 39%, 91% 39%, 91% 54%, 100% 54%, 100% 58%, 91% 58%, 91% 45%, 80% 45%, 80% 70%, 70% 70%, 70% 29%, 60% 29%, 60% 86%, 50% 86%, 50% 42%, 40% 42%, 40% 64%, 31% 64%, 31% 20%, 23% 20%, 23% 74%, 15% 74%, 15% 36%, 8% 36%, 8% 56%, 0 56%);
+    opacity: 0.42;
+    content: "";
+  }
+
+  .archive-back,
+  .photos-archive-hero > p,
+  .archive-summary,
+  .photo-collection-heading p,
+  .photo-collection-heading > span {
+    color: rgba(244, 242, 234, 0.52);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.11em;
+  }
+
+  .archive-back {
+    display: inline-block;
+    margin-bottom: 58px;
+    transition: color 180ms ease, transform 180ms ease;
+  }
+
+  .archive-back:hover {
+    color: #fff;
+    transform: translateX(-3px);
+  }
+
+  .photos-archive-hero > p { margin: 0 0 8px; }
+
+  .photos-archive-hero h1 {
+    position: relative;
+    z-index: 2;
+    width: fit-content;
+    margin: 0;
+    font-size: clamp(68px, 12vw, 168px);
+    font-weight: 850;
+    line-height: 0.78;
+    letter-spacing: -0.075em;
+  }
+
+  .archive-summary {
+    display: flex;
+    gap: 26px;
+    margin-top: 38px;
+  }
+
+  .photo-collections {
+    display: grid;
+    gap: 72px;
+    padding-top: 64px;
+  }
+
+  .photo-collection { scroll-margin-top: 92px; }
+
+  .photo-collection-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.22);
+  }
+
+  .photo-collection-heading p,
+  .photo-collection-summary { margin: 0; }
+
+  .photo-collection-heading h2 {
+    margin: 7px 0 0;
+    font-size: clamp(25px, 3vw, 42px);
+    font-weight: 680;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .photo-collection-summary {
+    max-width: 680px;
+    padding: 14px 0 22px;
+    color: rgba(244, 242, 234, 0.58);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .photo-gallery-item {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: #060606;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .photo-gallery-item::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0 1px, transparent 1.3px) 0 0 / 7px 7px;
+    opacity: 0.13;
+    content: "";
+    mix-blend-mode: screen;
+  }
+
+  .photo-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.08) brightness(0.74);
+    transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), filter 320ms ease;
+  }
+
+  .photo-gallery-item:hover img,
+  .photo-gallery-item:focus-visible img {
+    filter: grayscale(0.7) contrast(1.04) brightness(1);
+    transform: scale(1.055);
+  }
+
+  .photo-gallery-index,
+  .photo-gallery-video {
+    position: absolute;
+    z-index: 2;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.68);
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  .photo-gallery-index { top: 8px; left: 8px; }
+  .photo-gallery-video { right: 8px; bottom: 8px; }
+
+  @media (max-width: 900px) {
+    .photo-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .photos-archive { padding-top: 42px; }
+    .photos-archive-hero { min-height: 270px; }
+    .photos-archive-hero::after { width: 62vw; bottom: 62px; }
+    .archive-back { margin-bottom: 46px; }
+    .photo-collections { gap: 54px; padding-top: 48px; }
+    .photo-collection-heading { align-items: start; }
+    .photo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  }
+</style>

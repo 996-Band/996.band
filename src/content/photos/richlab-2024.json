@@ -1,0 +1,144 @@
+{
+  "title": "2024 RichLab 年会",
+  "slug": "richlab-2024",
+  "date": "2024-01-26",
+  "location": "杭州",
+  "summary": "灯光、噪声、合唱和工程师乐队的一次年会现场。",
+  "cover": {
+    "src": "/assets/photos/richlab-2024/20240126-13.webp",
+    "thumbnail": "/assets/photos/richlab-2024/20240126-13-thumb.webp",
+    "alt": "2024 RichLab 年会相册封面",
+    "width": 1280,
+    "height": 853
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-1.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-1-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 1",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-2.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-2-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 2",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-3.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-3-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 3",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-4.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-4-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 4",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-5.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-5-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 5",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-6.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-6-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 6",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-7.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-7-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 7",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-8.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-8-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 8",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-9.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-9-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 9",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-10.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-10-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 10",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-11.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-11-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 11",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-12.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-12-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 12",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-13.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-13-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 13",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-14.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-14-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 14",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-15.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-15-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 15",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/richlab-2024/20240126-16.webp",
+      "thumbnail": "/assets/photos/richlab-2024/20240126-16-thumb.webp",
+      "alt": "2024 RichLab 年会现场记录 16",
+      "width": 1280,
+      "height": 720
+    }
+  ]
+}

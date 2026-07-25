@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/home/SiteHeader.astro';
+import SiteFooter from '../../components/home/SiteFooter.astro';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.');
+---
+
+<BaseLayout title="Articles — 996 Band" description="996 Band articles, creation stories and live archives.">
+  <SiteHeader />
+  <main class="article-archive">
+    <header class="article-archive-hero">
+      <a href="/#articles">← BACK TO HOME</a>
+      <p>WORDS / SIGNAL / STAGE MEMORY</p>
+      <h1>ARTICLES</h1>
+      <span>{String(articles.length).padStart(2, '0')} ENTRIES</span>
+    </header>
+    <div class="article-list">
+      {articles.map((article, index) => (
+        <a href={`/articles/${article.id}`} class="article-row">
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <time>{formatDate(article.data.date)}</time>
+            <h2>{article.data.title}</h2>
+            <p>{article.data.summary}</p>
+          </div>
+          <i>↗</i>
+        </a>
+      ))}
+    </div>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .article-archive { width: var(--page); margin: 0 auto; padding: clamp(52px, 8vw, 110px) 0 70px; }
+  .article-archive-hero { position: relative; min-height: 330px; padding: 26px 0 46px; border-top: 1px solid rgba(255,255,255,.2); border-bottom: 1px dotted rgba(255,255,255,.24); }
+  .article-archive-hero a, .article-archive-hero p, .article-archive-hero > span, .article-row > span, .article-row time { color: rgba(244,242,234,.5); font-family: var(--mono); font-size: 10px; letter-spacing: .1em; }
+  .article-archive-hero a { display: inline-block; margin-bottom: 60px; }
+  .article-archive-hero p { margin: 0 0 8px; }
+  .article-archive-hero h1 { margin: 0; font-size: clamp(64px, 11vw, 154px); line-height: .8; letter-spacing: -.07em; }
+  .article-archive-hero > span { position: absolute; right: 0; bottom: 48px; }
+  .article-list { border-top: 1px solid rgba(255,255,255,.14); }
+  .article-row { display: grid; grid-template-columns: 54px minmax(0,1fr) auto; gap: 24px; align-items: start; padding: 28px 10px; border-bottom: 1px dotted rgba(255,255,255,.2); transition: background 180ms ease, padding 240ms ease; }
+  .article-row:hover { padding-right: 18px; padding-left: 18px; background: rgba(255,255,255,.035); }
+  .article-row h2 { margin: 7px 0; font-size: clamp(22px, 3vw, 38px); letter-spacing: -.035em; }
+  .article-row p { max-width: 720px; margin: 0; color: rgba(244,242,234,.54); font-size: 13px; line-height: 1.65; }
+  .article-row i { font-size: 24px; font-style: normal; font-weight: 200; }
+  @media (max-width: 640px) { .article-row { grid-template-columns: 30px minmax(0,1fr) auto; gap: 10px; } }
+</style>

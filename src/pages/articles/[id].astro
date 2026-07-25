@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/home/SiteHeader.astro';
+import SiteFooter from '../../components/home/SiteFooter.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  return articles.map((article) => ({ params: { id: article.id }, props: { article } }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const date = article.data.date.toISOString().slice(0, 10).replaceAll('-', '.');
+---
+
+<BaseLayout title={`${article.data.title} — 996 Band`} description={article.data.summary} type="article">
+  <SiteHeader />
+  <main class="article-page">
+    <a class="article-back" href="/articles">← ALL ARTICLES</a>
+    <header class="article-header">
+      <p>{date} / {article.data.tags.join(' · ')}</p>
+      <h1>{article.data.title}</h1>
+      <strong>{article.data.summary}</strong>
+    </header>
+    <article class="article-body"><Content /></article>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .article-page { width: min(90vw, 900px); margin: 0 auto; padding: clamp(70px, 10vw, 130px) 0 80px; }
+  .article-back, .article-header p { color: rgba(244,242,234,.46); font-family: var(--mono); font-size: 10px; letter-spacing: .1em; }
+  .article-back { display: inline-block; margin-bottom: 68px; }
+  .article-header { padding-bottom: 42px; border-bottom: 1px dotted rgba(255,255,255,.24); }
+  .article-header p { margin: 0 0 18px; }
+  .article-header h1 { max-width: 820px; margin: 0; font-size: clamp(42px, 7vw, 82px); line-height: .98; letter-spacing: -.06em; }
+  .article-header strong { display: block; max-width: 660px; margin-top: 26px; color: rgba(244,242,234,.62); font-size: 16px; font-weight: 400; line-height: 1.7; }
+  .article-body { padding: 42px 0 20px; color: rgba(244,242,234,.82); font-size: 16px; line-height: 1.9; }
+  .article-body :global(h2), .article-body :global(h3) { margin: 2em 0 .7em; color: #fff; letter-spacing: -.025em; }
+  .article-body :global(p), .article-body :global(ul), .article-body :global(ol), .article-body :global(blockquote) { margin: 0 0 1.35em; }
+  .article-body :global(a) { border-bottom: 1px dotted rgba(255,255,255,.5); }
+  .article-body :global(blockquote) { padding-left: 18px; border-left: 2px solid rgba(255,255,255,.5); color: rgba(244,242,234,.58); }
+  .article-body :global(pre) { padding: 18px; overflow: auto; border: 1px solid rgba(255,255,255,.16); background: #080808; }
+  .article-body :global(code) { font-family: var(--mono); font-size: .9em; }
+</style>

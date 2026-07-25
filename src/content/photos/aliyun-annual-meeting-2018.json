@@ -1,0 +1,41 @@
+{
+  "title": "阿里云年会",
+  "slug": "aliyun-annual-meeting-2018",
+  "date": "2018-04-12",
+  "summary": "996 Band 在阿里云年会的现场影像记录。",
+  "cover": {
+    "src": "/assets/photos/aliyun-annual-meeting-2018/20180412-3.webp",
+    "thumbnail": "/assets/photos/aliyun-annual-meeting-2018/20180412-3-thumb.webp",
+    "alt": "阿里云年会相册封面",
+    "width": 1024,
+    "height": 683
+  },
+  "media": [
+    {
+      "type": "video",
+      "src": "/assets/photos/aliyun-annual-meeting-2018/20180412-1.mp4",
+      "thumbnail": "/assets/photos/aliyun-annual-meeting-2018/20180412-1-thumb.webp",
+      "poster": "/assets/photos/aliyun-annual-meeting-2018/20180412-1-poster.webp",
+      "alt": "阿里云年会现场记录 1",
+      "width": 648,
+      "height": 430
+    },
+    {
+      "type": "video",
+      "src": "/assets/photos/aliyun-annual-meeting-2018/20180412-2.mp4",
+      "thumbnail": "/assets/photos/aliyun-annual-meeting-2018/20180412-2-thumb.webp",
+      "poster": "/assets/photos/aliyun-annual-meeting-2018/20180412-2-poster.webp",
+      "alt": "阿里云年会现场记录 2",
+      "width": 648,
+      "height": 430
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/aliyun-annual-meeting-2018/20180412-3.webp",
+      "thumbnail": "/assets/photos/aliyun-annual-meeting-2018/20180412-3-thumb.webp",
+      "alt": "阿里云年会现场记录 3",
+      "width": 1024,
+      "height": 683
+    }
+  ]
+}

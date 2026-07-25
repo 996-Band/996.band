@@ -1,0 +1,11 @@
+{
+  "title": "996 Band 新版官网改版完成！",
+  "slug": "site-v2-prototype",
+  "type": "site",
+  "startAt": "2026-07-07",
+  "endAt": "2026-08-31",
+  "enabled": true,
+  "priority": 100,
+  "href": "/articles/site-v2-notes",
+  "summary": "黑白 VJ 舞台方向已进入首页原型实现阶段。"
+}

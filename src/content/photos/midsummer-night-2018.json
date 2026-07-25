@@ -1,0 +1,63 @@
+{
+  "title": "阿里巴巴仲夏之夜",
+  "slug": "midsummer-night-2018",
+  "date": "2018-09-06",
+  "summary": "996 Band 仲夏之夜现场记录。",
+  "cover": {
+    "src": "/assets/photos/midsummer-night-2018/20180906-1.webp",
+    "thumbnail": "/assets/photos/midsummer-night-2018/20180906-1-thumb.webp",
+    "alt": "阿里巴巴仲夏之夜相册封面",
+    "width": 1200,
+    "height": 900
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/midsummer-night-2018/20180906-1.webp",
+      "thumbnail": "/assets/photos/midsummer-night-2018/20180906-1-thumb.webp",
+      "alt": "仲夏之夜现场记录 1",
+      "width": 1200,
+      "height": 900
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/midsummer-night-2018/20180906-2.webp",
+      "thumbnail": "/assets/photos/midsummer-night-2018/20180906-2-thumb.webp",
+      "alt": "仲夏之夜现场记录 2",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/midsummer-night-2018/20180906-3.webp",
+      "thumbnail": "/assets/photos/midsummer-night-2018/20180906-3-thumb.webp",
+      "alt": "仲夏之夜现场记录 3",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/midsummer-night-2018/20180906-4.webp",
+      "thumbnail": "/assets/photos/midsummer-night-2018/20180906-4-thumb.webp",
+      "alt": "仲夏之夜现场记录 4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/midsummer-night-2018/20180906-6.webp",
+      "thumbnail": "/assets/photos/midsummer-night-2018/20180906-6-thumb.webp",
+      "alt": "仲夏之夜现场记录 5",
+      "width": 1920,
+      "height": 1440
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/midsummer-night-2018/20180906-7.webp",
+      "thumbnail": "/assets/photos/midsummer-night-2018/20180906-7-thumb.webp",
+      "alt": "仲夏之夜现场记录 6",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

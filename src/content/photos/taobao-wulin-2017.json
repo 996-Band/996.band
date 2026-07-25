@@ -1,0 +1,31 @@
+{
+  "title": "淘宝武林大会",
+  "slug": "taobao-wulin-2017",
+  "date": "2017-05-10",
+  "summary": "996 Band 在淘宝武林大会的现场记录。",
+  "cover": {
+    "src": "/assets/photos/taobao-wulin-2017/20170510-1.webp",
+    "thumbnail": "/assets/photos/taobao-wulin-2017/20170510-1-thumb.webp",
+    "alt": "淘宝武林大会相册封面",
+    "width": 1920,
+    "height": 1080
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/taobao-wulin-2017/20170510-1.webp",
+      "thumbnail": "/assets/photos/taobao-wulin-2017/20170510-1-thumb.webp",
+      "alt": "淘宝武林大会现场记录 1",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/taobao-wulin-2017/20170510-2.webp",
+      "thumbnail": "/assets/photos/taobao-wulin-2017/20170510-2-thumb.webp",
+      "alt": "淘宝武林大会现场记录 2",
+      "width": 1458,
+      "height": 774
+    }
+  ]
+}

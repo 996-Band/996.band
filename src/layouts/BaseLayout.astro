@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+import { assetUrl } from '../lib/assets';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  robots?: string;
+}
+
+const {
+  title = '996 Band',
+  description = '996 Band official website — engineers, musicians, live noise.',
+  image = '/assets/design/homepage-hero-stage-clean.webp',
+  type = 'website',
+  robots = 'index,follow',
+} = Astro.props;
+const site = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, site).toString();
+const socialImageURL = new URL(assetUrl(image), site).toString();
+const enableImageCache = import.meta.env.PROD;
+const heroStageImage = assetUrl('/assets/design/homepage-hero-stage-clean.webp');
+const heroLogoImage = assetUrl('/assets/design/homepage-hero-logo-led-only.png');
+const assetStyle = `--hero-stage-image:url("${heroStageImage}");--hero-logo-image:url("${heroLogoImage}")`;
+---
+
+<!doctype html>
+<html lang="zh-CN" style={assetStyle}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#050505" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href={assetUrl('/assets/brand/996-logo.png')} />
+    <link rel="apple-touch-icon" href={assetUrl('/assets/brand/996-logo.png')} />
+    <meta property="og:site_name" content="996 Band" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="1672" />
+    <meta property="og:image:height" content="941" />
+    <meta property="og:image:alt" content="996 Band black-and-white LED stage" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div id="top" class="page-top-anchor" aria-hidden="true"></div>
+    <slot />
+    {enableImageCache && (
+      <script is:inline>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', async () => {
+            try {
+              const registration = await navigator.serviceWorker.register('/sw.js', {
+                scope: '/',
+                updateViaCache: 'none',
+              });
+              await registration.update();
+              if (registration.waiting) registration.waiting.postMessage('SKIP_WAITING');
+              registration.addEventListener('updatefound', () => {
+                registration.installing?.addEventListener('statechange', (event) => {
+                  const worker = event.currentTarget;
+                  if (worker?.state === 'installed' && navigator.serviceWorker.controller) {
+                    worker.postMessage('SKIP_WAITING');
+                  }
+                });
+              });
+            } catch (error) {
+              console.warn('Image cache registration failed:', error);
+            }
+          });
+        }
+      </script>
+    )}
+    {!enableImageCache && (
+      <script is:inline>
+        if ('serviceWorker' in navigator) {
+          void navigator.serviceWorker.getRegistrations().then((registrations) => {
+            for (const registration of registrations) {
+              if (registration.scope.startsWith(window.location.origin)) void registration.unregister();
+            }
+          });
+        }
+        if ('caches' in window) {
+          void caches.keys().then((cacheNames) => {
+            for (const cacheName of cacheNames) {
+              if (cacheName.startsWith('996band-images-')) void caches.delete(cacheName);
+            }
+          });
+        }
+      </script>
+    )}
+  </body>
+</html>

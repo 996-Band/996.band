@@ -1,0 +1,128 @@
+{
+  "title": "第十八届 D2 终端技术大会",
+  "slug": "d2-2023",
+  "date": "2023-12-16",
+  "location": "杭州",
+  "summary": "终端技术大会现场，代码、舞台和音乐短暂地合在一起。",
+  "cover": {
+    "src": "/assets/photos/d2-2023/20231216-13.webp",
+    "thumbnail": "/assets/photos/d2-2023/20231216-13-thumb.webp",
+    "alt": "第十八届 D2 终端技术大会相册封面",
+    "width": 1280,
+    "height": 854
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-1.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-1-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 1",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-2.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-2-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 2",
+      "width": 854,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-3.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-3-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 3",
+      "width": 835,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-4.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-4-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 4",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-5.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-5-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 5",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-6.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-6-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 6",
+      "width": 854,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-7.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-7-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 7",
+      "width": 854,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-8.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-8-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 8",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-9.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-9-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 9",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-10.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-10-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 10",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-11.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-11-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 11",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-12.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-12-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 12",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-13.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-13-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 13",
+      "width": 1280,
+      "height": 854
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2023/20231216-14.webp",
+      "thumbnail": "/assets/photos/d2-2023/20231216-14-thumb.webp",
+      "alt": "第十八届 D2 终端技术大会现场记录 14",
+      "width": 1280,
+      "height": 854
+    }
+  ]
+}

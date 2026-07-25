@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>996 Band Content Manager</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="996 Band Content Manager">
+          <img src="/assets/brand/996-logo-transparent.png" alt="996 Band" />
+          <span>CONTENT<br />MANAGER</span>
+        </a>
+        <nav class="nav" aria-label="内容板块">
+          <button class="nav-item is-active" data-section="photos"><b>01</b><span>PHOTOS</span><i data-count="photos">0</i></button>
+          <button class="nav-item" data-section="notices"><b>02</b><span>NOTICE</span><i data-count="notices">0</i></button>
+          <button class="nav-item" data-section="articles"><b>03</b><span>ARTICLES</span><i data-count="articles">0</i></button>
+          <button class="nav-item" data-section="albums"><b>04</b><span>ALBUMS</span><i data-count="albums">0</i></button>
+        </nav>
+        <div class="local-badge" data-media-mode><span></span><b>LOCAL ASSETS</b></div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p>996 BAND / STATIC CONTENT CONTROL</p>
+            <h1 data-page-title>PHOTOS</h1>
+          </div>
+          <div class="topbar-actions">
+            <a class="button button-ghost" href="http://127.0.0.1:4321" target="_blank" rel="noreferrer">打开网站 ↗</a>
+            <button class="button button-primary" data-build>检查并构建</button>
+          </div>
+        </header>
+
+        <section class="status-strip" aria-live="polite">
+          <span class="status-light"></span>
+          <p data-status>内容管理服务已连接</p>
+          <time data-clock></time>
+        </section>
+
+        <div class="content-layout">
+          <section class="content-list-panel">
+            <header class="panel-heading">
+              <div>
+                <span>CONTENT INDEX</span>
+                <strong data-list-title>相册列表</strong>
+              </div>
+              <button class="square-button" data-new aria-label="新增内容">＋</button>
+            </header>
+            <div class="content-list" data-list></div>
+          </section>
+
+          <section class="editor-panel" data-editor>
+            <div class="empty-state">
+              <span>///</span>
+              <h2>选择一条内容开始维护</h2>
+              <p>或者点击左侧的 ＋ 新建内容</p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

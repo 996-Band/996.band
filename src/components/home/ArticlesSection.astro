@@ -1,0 +1,50 @@
+---
+import { assetUrl } from '../../lib/assets';
+
+interface Article {
+  id: string;
+  data: {
+    title: string;
+    date: Date;
+    summary: string;
+    tags: string[];
+  };
+}
+
+interface Props {
+  articles: Article[];
+}
+
+const { articles } = Astro.props;
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.');
+const thumbnails = [
+  '/assets/design/article-signal-01.png',
+  '/assets/design/article-signal-02.png',
+  '/assets/design/article-signal-03.png',
+].map(assetUrl);
+---
+
+<section id="articles" class="section articles-section">
+  <div class="section-heading">
+    <div>
+      <h2>ARTICLES</h2>
+    </div>
+    <a href="/articles" class="section-link">VIEW ALL</a>
+  </div>
+
+  <div class="article-grid">
+    {articles.map((article, index) => (
+      <a
+        href={`/articles/${article.id}`}
+        class="article-card"
+        aria-label={`阅读 ${article.data.title}`}
+      >
+        <img src={thumbnails[index % thumbnails.length]} alt="" loading="lazy" />
+        <div class="card-meta">{formatDate(article.data.date)}</div>
+        <h3>{article.data.title}</h3>
+        <p>{article.data.summary}</p>
+        <span class="card-corner" aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+</section>

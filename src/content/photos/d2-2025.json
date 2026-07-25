@@ -1,0 +1,312 @@
+{
+  "title": "第十九届 D2 终端技术大会",
+  "slug": "d2-2025",
+  "date": "2025-03-08",
+  "location": "杭州",
+  "summary": "第十九届 D2 终端技术大会 996 乐队现场表演",
+  "cover": {
+    "src": "/assets/photos/d2-2025/08.webp",
+    "thumbnail": "/assets/photos/d2-2025/08-thumb.webp",
+    "alt": "第十九届 D2 终端技术大会相册封面",
+    "width": 1920,
+    "height": 1280
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/02.webp",
+      "thumbnail": "/assets/photos/d2-2025/02-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 2",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/01.webp",
+      "thumbnail": "/assets/photos/d2-2025/01-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/03.webp",
+      "thumbnail": "/assets/photos/d2-2025/03-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 3",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/04.webp",
+      "thumbnail": "/assets/photos/d2-2025/04-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/05.webp",
+      "thumbnail": "/assets/photos/d2-2025/05-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 5",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/06.webp",
+      "thumbnail": "/assets/photos/d2-2025/06-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/07.webp",
+      "thumbnail": "/assets/photos/d2-2025/07-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 7",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/08.webp",
+      "thumbnail": "/assets/photos/d2-2025/08-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 8",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/09.webp",
+      "thumbnail": "/assets/photos/d2-2025/09-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 9",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/10.webp",
+      "thumbnail": "/assets/photos/d2-2025/10-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 10",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/11.webp",
+      "thumbnail": "/assets/photos/d2-2025/11-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 11",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/12.webp",
+      "thumbnail": "/assets/photos/d2-2025/12-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 12",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/15.webp",
+      "thumbnail": "/assets/photos/d2-2025/15-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 15",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/16.webp",
+      "thumbnail": "/assets/photos/d2-2025/16-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 16",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/17.webp",
+      "thumbnail": "/assets/photos/d2-2025/17-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 17",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/18.webp",
+      "thumbnail": "/assets/photos/d2-2025/18-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 18",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/19.webp",
+      "thumbnail": "/assets/photos/d2-2025/19-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 19",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/20.webp",
+      "thumbnail": "/assets/photos/d2-2025/20-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 20",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/21.webp",
+      "thumbnail": "/assets/photos/d2-2025/21-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 21",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/22.webp",
+      "thumbnail": "/assets/photos/d2-2025/22-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 22",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/23.webp",
+      "thumbnail": "/assets/photos/d2-2025/23-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 23",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/24.webp",
+      "thumbnail": "/assets/photos/d2-2025/24-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 24",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/25.webp",
+      "thumbnail": "/assets/photos/d2-2025/25-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 25",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/26.webp",
+      "thumbnail": "/assets/photos/d2-2025/26-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 26",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/27.webp",
+      "thumbnail": "/assets/photos/d2-2025/27-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 27",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/28.webp",
+      "thumbnail": "/assets/photos/d2-2025/28-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 28",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/29.webp",
+      "thumbnail": "/assets/photos/d2-2025/29-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 29",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/30.webp",
+      "thumbnail": "/assets/photos/d2-2025/30-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 30",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/37.webp",
+      "thumbnail": "/assets/photos/d2-2025/37-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 37",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/13.webp",
+      "thumbnail": "/assets/photos/d2-2025/13-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 13",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/31.webp",
+      "thumbnail": "/assets/photos/d2-2025/31-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 31",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/32.webp",
+      "thumbnail": "/assets/photos/d2-2025/32-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 32",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/33.webp",
+      "thumbnail": "/assets/photos/d2-2025/33-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 33",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/34.webp",
+      "thumbnail": "/assets/photos/d2-2025/34-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 34",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/35.webp",
+      "thumbnail": "/assets/photos/d2-2025/35-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 35",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/36.webp",
+      "thumbnail": "/assets/photos/d2-2025/36-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 36",
+      "width": 1920,
+      "height": 1078
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2025/14.webp",
+      "thumbnail": "/assets/photos/d2-2025/14-thumb.webp",
+      "alt": "第十九届 D2 终端技术大会现场记录 14",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

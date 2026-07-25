@@ -1,0 +1,49 @@
+---
+import { assetUrl } from '../../lib/assets';
+
+interface AlbumEntry {
+  data: {
+    title: string;
+    type: 'single' | 'ep' | 'album';
+    href: string;
+    cover: {
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+    };
+  };
+}
+
+interface Props {
+  albums: AlbumEntry[];
+}
+
+const { albums } = Astro.props;
+---
+
+<section id="albums" class="section members-section">
+  <div class="section-heading">
+    <div><h2>ALBUMS</h2></div>
+  </div>
+  <div class="member-grid">
+    {albums.map((album) => {
+      const content = (
+        <>
+          <img
+            src={assetUrl(album.data.cover.src)}
+            alt={album.data.cover.alt}
+            width={album.data.cover.width}
+            height={album.data.cover.height}
+            loading="lazy"
+          />
+          <strong>{album.data.title}</strong>
+          <span>/ {album.data.type.toUpperCase()}</span>
+        </>
+      );
+      return album.data.href
+        ? <a class="member-card" href={album.data.href} target="_blank" rel="noreferrer">{content}</a>
+        : <div class="member-card">{content}</div>;
+    })}
+  </div>
+</section>

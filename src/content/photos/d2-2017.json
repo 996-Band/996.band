@@ -1,0 +1,31 @@
+{
+  "title": "第十二届 D2 前端论坛",
+  "slug": "d2-2017",
+  "date": "2017-12-16",
+  "summary": "996 Band 在第十二届 D2 前端论坛的现场记录。",
+  "cover": {
+    "src": "/assets/photos/d2-2017/20171216-1.webp",
+    "thumbnail": "/assets/photos/d2-2017/20171216-1-thumb.webp",
+    "alt": "第十二届 D2 前端论坛相册封面",
+    "width": 1920,
+    "height": 1280
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2017/20171216-1.webp",
+      "thumbnail": "/assets/photos/d2-2017/20171216-1-thumb.webp",
+      "alt": "第十二届 D2 前端论坛现场记录 1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/d2-2017/20171216-2.webp",
+      "thumbnail": "/assets/photos/d2-2017/20171216-2-thumb.webp",
+      "alt": "第十二届 D2 前端论坛现场记录 2",
+      "width": 1920,
+      "height": 1440
+    }
+  ]
+}

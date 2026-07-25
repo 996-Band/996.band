@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/home/SiteHeader.astro';
+import SiteFooter from '../components/home/SiteFooter.astro';
+---
+
+<BaseLayout
+  title="Signal Lost — 996 Band"
+  description="The requested signal could not be found."
+  robots="noindex,follow"
+>
+  <SiteHeader />
+  <main class="not-found-page">
+    <p>ERROR / SIGNAL LOST</p>
+    <h1>404</h1>
+    <strong>这一拍没有落在服务器上。</strong>
+    <a href="/">RETURN TO STAGE ↗</a>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .not-found-page {
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    width: var(--page);
+    min-height: min(72vh, 720px);
+    margin: 0 auto;
+    padding: 72px 0;
+  }
+
+  .not-found-page p,
+  .not-found-page a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  .not-found-page p { color: var(--muted); }
+
+  .not-found-page h1 {
+    margin: 4px 0 18px;
+    font-size: clamp(120px, 26vw, 360px);
+    font-weight: 850;
+    line-height: 0.78;
+    letter-spacing: -0.09em;
+  }
+
+  .not-found-page strong {
+    margin-bottom: 42px;
+    color: rgba(244, 242, 234, 0.62);
+    font-size: clamp(18px, 2.4vw, 30px);
+    font-weight: 400;
+  }
+
+  .not-found-page a {
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .not-found-page a:hover,
+  .not-found-page a:focus-visible {
+    border-color: #fff;
+    background: #fff;
+    color: #000;
+    outline: none;
+  }
+</style>

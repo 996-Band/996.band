@@ -1,0 +1,16 @@
+{
+  "title": "前端恋曲 2024",
+  "slug": "release-02",
+  "type": "single",
+  "date": "2023-12-16",
+  "summary": "",
+  "href": "https://music.163.com/#/album?id=180813621",
+  "enabled": true,
+  "priority": 300,
+  "cover": {
+    "src": "/assets/albums/release-02/cover.webp",
+    "alt": "前端恋曲 2024 cover",
+    "width": 1024,
+    "height": 1024
+  }
+}

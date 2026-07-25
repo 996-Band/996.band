@@ -1,13 +1,32 @@
 {
-  "name": "996-band",
+  "name": "996-band-site-v2",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt generate",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
   },
-  "dependencies": {
-    "nuxt": "^2.15.8",
-    "smoothscroll-polyfill": "^0.4.3"
+  "packageManager": "pnpm@11.7.0",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check",
+    "build": "node --env-file-if-exists=.env scripts/media/generate-manifest.mjs && astro build && node --env-file-if-exists=.env scripts/generate-image-service-worker.mjs",
+    "release:check": "pnpm check && pnpm build",
+    "preview": "astro preview --host 127.0.0.1",
+    "content:manage": "node scripts/content-manager/server.mjs",
+    "photos:manage": "node scripts/content-manager/server.mjs",
+    "photos:migrate:legacy": "node scripts/migrate-legacy-photos.mjs",
+    "media:manifest": "node --env-file-if-exists=.env scripts/media/generate-manifest.mjs",
+    "media:check": "node --env-file-if-exists=.env scripts/media/check.mjs",
+    "media:migrate": "node --env-file-if-exists=.env scripts/media/migrate.mjs",
+    "media:gc": "node --env-file-if-exists=.env scripts/media/gc.mjs"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/sitemap": "^3.7.3",
+    "ali-oss": "6.23.0",
+    "astro": "^7.0.6",
+    "sharp": "^0.35.3",
+    "typescript": "^6.0.3"
   }
 }

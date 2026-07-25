@@ -1,0 +1,39 @@
+{
+  "title": "蚂蚁 Hackathon",
+  "slug": "ant-hackathon-2018",
+  "date": "2018-04-20",
+  "summary": "996 Band 在蚂蚁 Hackathon 的现场记录。",
+  "cover": {
+    "src": "/assets/photos/ant-hackathon-2018/20180420-1.webp",
+    "thumbnail": "/assets/photos/ant-hackathon-2018/20180420-1-thumb.webp",
+    "alt": "蚂蚁 Hackathon相册封面",
+    "width": 1920,
+    "height": 1280
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/ant-hackathon-2018/20180420-1.webp",
+      "thumbnail": "/assets/photos/ant-hackathon-2018/20180420-1-thumb.webp",
+      "alt": "蚂蚁 Hackathon现场记录 1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/ant-hackathon-2018/20180420-2.webp",
+      "thumbnail": "/assets/photos/ant-hackathon-2018/20180420-2-thumb.webp",
+      "alt": "蚂蚁 Hackathon现场记录 2",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/ant-hackathon-2018/20180420-3.webp",
+      "thumbnail": "/assets/photos/ant-hackathon-2018/20180420-3-thumb.webp",
+      "alt": "蚂蚁 Hackathon现场记录 3",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "新新歌发表会",
+  "slug": "new-new-song-launch-2017",
+  "date": "2017-12-12",
+  "summary": "996 Band 新新歌发表会现场记录。",
+  "cover": {
+    "src": "/assets/photos/new-new-song-launch-2017/20171212-1.webp",
+    "thumbnail": "/assets/photos/new-new-song-launch-2017/20171212-1-thumb.webp",
+    "alt": "新新歌发表会相册封面",
+    "width": 1920,
+    "height": 1280
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/new-new-song-launch-2017/20171212-1.webp",
+      "thumbnail": "/assets/photos/new-new-song-launch-2017/20171212-1-thumb.webp",
+      "alt": "新新歌发表会现场记录 1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/new-new-song-launch-2017/20171212-2.webp",
+      "thumbnail": "/assets/photos/new-new-song-launch-2017/20171212-2-thumb.webp",
+      "alt": "新新歌发表会现场记录 2",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/new-new-song-launch-2017/20171212-3.webp",
+      "thumbnail": "/assets/photos/new-new-song-launch-2017/20171212-3-thumb.webp",
+      "alt": "新新歌发表会现场记录 3",
+      "width": 1920,
+      "height": 1279
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/new-new-song-launch-2017/20171212-5.webp",
+      "thumbnail": "/assets/photos/new-new-song-launch-2017/20171212-5-thumb.webp",
+      "alt": "新新歌发表会现场记录 4",
+      "width": 1920,
+      "height": 1440
+    }
+  ]
+}

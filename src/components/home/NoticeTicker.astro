@@ -1,0 +1,43 @@
+---
+interface Notice {
+  title: string;
+  summary: string;
+  href: string;
+  startAt: Date;
+}
+
+interface Props {
+  notices?: Notice[];
+}
+
+const { notices = [] } = Astro.props;
+const items = notices.slice(0, 3);
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).replaceAll('-', '.');
+---
+
+<section id="notice" class="notice-ticker" aria-label="Latest notice">
+  <div class="notice-inner">
+    <div class="notice-label">NOTICE</div>
+    <div class="notice-wave" aria-hidden="true"></div>
+    {items.slice(0, 3).map((notice, index) => (
+      <Fragment>
+        <a
+          href={notice.href ?? '#'}
+          class:list={[
+            'notice-item',
+            index === 0 && 'notice-item-primary',
+            index === 1 && 'notice-item-secondary',
+          ]}
+        >
+          <time>{formatDate(notice.startAt)}</time>
+          <span>{notice.title}</span>
+        </a>
+        {index < Math.min(items.length, 3) - 1 && <i aria-hidden="true">|</i>}
+      </Fragment>
+    ))}
+    <div class="notice-live">
+      <span class="status-dot"></span>
+      LIVE
+    </div>
+  </div>
+</section>

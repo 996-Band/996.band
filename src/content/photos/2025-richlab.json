@@ -1,0 +1,208 @@
+{
+  "title": "2025 RichLab 年会",
+  "slug": "2025-richlab",
+  "date": "2025-01-21",
+  "location": "杭州",
+  "summary": "2025 RichLab 年会 996 乐队现场",
+  "cover": {
+    "src": "/assets/photos/2025-richlab/09.webp",
+    "thumbnail": "/assets/photos/2025-richlab/09-thumb.webp",
+    "alt": "2025 RichLab 年会相册封面",
+    "width": 1280,
+    "height": 1920
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/01.webp",
+      "thumbnail": "/assets/photos/2025-richlab/01-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 1",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/02.webp",
+      "thumbnail": "/assets/photos/2025-richlab/02-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 2",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/03.webp",
+      "thumbnail": "/assets/photos/2025-richlab/03-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 3",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/04.webp",
+      "thumbnail": "/assets/photos/2025-richlab/04-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 4",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/05.webp",
+      "thumbnail": "/assets/photos/2025-richlab/05-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 5",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/06.webp",
+      "thumbnail": "/assets/photos/2025-richlab/06-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 6",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/07.webp",
+      "thumbnail": "/assets/photos/2025-richlab/07-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 7",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/08.webp",
+      "thumbnail": "/assets/photos/2025-richlab/08-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 8",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/09.webp",
+      "thumbnail": "/assets/photos/2025-richlab/09-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 9",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/10.webp",
+      "thumbnail": "/assets/photos/2025-richlab/10-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 10",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/11.webp",
+      "thumbnail": "/assets/photos/2025-richlab/11-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 11",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/12.webp",
+      "thumbnail": "/assets/photos/2025-richlab/12-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 12",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/13.webp",
+      "thumbnail": "/assets/photos/2025-richlab/13-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 13",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/14.webp",
+      "thumbnail": "/assets/photos/2025-richlab/14-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 14",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/15.webp",
+      "thumbnail": "/assets/photos/2025-richlab/15-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 15",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/16.webp",
+      "thumbnail": "/assets/photos/2025-richlab/16-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 16",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/17.webp",
+      "thumbnail": "/assets/photos/2025-richlab/17-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 17",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/18.webp",
+      "thumbnail": "/assets/photos/2025-richlab/18-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 18",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/19.webp",
+      "thumbnail": "/assets/photos/2025-richlab/19-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 19",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/20.webp",
+      "thumbnail": "/assets/photos/2025-richlab/20-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 20",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/21.webp",
+      "thumbnail": "/assets/photos/2025-richlab/21-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 21",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/22.webp",
+      "thumbnail": "/assets/photos/2025-richlab/22-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 22",
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/23.webp",
+      "thumbnail": "/assets/photos/2025-richlab/23-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 23",
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/2025-richlab/24.webp",
+      "thumbnail": "/assets/photos/2025-richlab/24-thumb.webp",
+      "alt": "2025 RichLab 年会现场记录 24",
+      "width": 1920,
+      "height": 1280
+    }
+  ]
+}

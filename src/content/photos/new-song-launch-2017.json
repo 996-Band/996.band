@@ -1,0 +1,31 @@
+{
+  "title": "新歌发表会",
+  "slug": "new-song-launch-2017",
+  "date": "2017-01-22",
+  "summary": "996 Band 新歌发表会现场记录。",
+  "cover": {
+    "src": "/assets/photos/new-song-launch-2017/20170122-1.webp",
+    "thumbnail": "/assets/photos/new-song-launch-2017/20170122-1-thumb.webp",
+    "alt": "新歌发表会相册封面",
+    "width": 1280,
+    "height": 960
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "/assets/photos/new-song-launch-2017/20170122-1.webp",
+      "thumbnail": "/assets/photos/new-song-launch-2017/20170122-1-thumb.webp",
+      "alt": "新歌发表会现场记录 1",
+      "width": 1280,
+      "height": 960
+    },
+    {
+      "type": "image",
+      "src": "/assets/photos/new-song-launch-2017/20170122-2.webp",
+      "thumbnail": "/assets/photos/new-song-launch-2017/20170122-2-thumb.webp",
+      "alt": "新歌发表会现场记录 2",
+      "width": 1280,
+      "height": 960
+    }
+  ]
+}

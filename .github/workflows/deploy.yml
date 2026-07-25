@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      PUBLIC_ASSET_BASE_URL: ${{ vars.PUBLIC_ASSET_BASE_URL }}
+      PUBLIC_ASSET_BASE_URL: ${{ vars.PUBLIC_ASSET_BASE_URL || 'https://oss.996.band' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7

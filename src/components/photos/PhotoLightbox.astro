@@ -40,7 +40,7 @@ const serializedMedia = JSON.stringify(media).replaceAll('<', '\\u003c');
       <button type="button" data-photo-zoom-in aria-label="放大图片">+</button>
       <button type="button" class="photo-browser-fit" data-photo-zoom-reset>FIT</button>
     </div>
-    <span class="photo-browser-hint">SCROLL TO ZOOM · DRAG TO MOVE</span>
+    <span class="photo-browser-hint">SCROLL / PINCH TO ZOOM · DRAG TO MOVE · SWIPE TO CHANGE</span>
   </header>
 
   <button type="button" class="photo-browser-close" data-photo-browser-close aria-label="关闭预览">×</button>
@@ -106,10 +106,22 @@ const serializedMedia = JSON.stringify(media).replaceAll('<', '\\u003c');
   let dragOriginY = 0;
   let dragging = false;
   let toastTimer = 0;
+  let touchMode: 'none' | 'swipe' | 'drag' | 'pinch' = 'none';
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let touchOriginX = 0;
+  let touchOriginY = 0;
+  let pinchStartDistance = 0;
+  let pinchStartScale = 1;
 
   const currentMedia = () => media[currentIndex];
   const isCurrentImage = () => currentMedia()?.type === 'image';
   const clamp = (value: number, minimum: number, maximum: number) => Math.min(maximum, Math.max(minimum, value));
+  const distanceBetweenTouches = (touches: TouchList) => Math.hypot(
+    touches[0].clientX - touches[1].clientX,
+    touches[0].clientY - touches[1].clientY,
+  );
 
   const updateTransform = () => {
     if (!image || !zoomValue) return;
@@ -237,7 +249,7 @@ const serializedMedia = JSON.stringify(media).replaceAll('<', '\\u003c');
   });
 
   stage?.addEventListener('pointerdown', (event) => {
-    if (!isCurrentImage() || scale <= 1 || !stage) return;
+    if (event.pointerType === 'touch' || !isCurrentImage() || scale <= 1 || !stage) return;
     dragging = true;
     dragStartX = event.clientX;
     dragStartY = event.clientY;
@@ -248,20 +260,108 @@ const serializedMedia = JSON.stringify(media).replaceAll('<', '\\u003c');
   });
 
   stage?.addEventListener('pointermove', (event) => {
-    if (!dragging) return;
+    if (event.pointerType === 'touch' || !dragging) return;
     translateX = dragOriginX + event.clientX - dragStartX;
     translateY = dragOriginY + event.clientY - dragStartY;
     updateTransform();
   });
 
   const stopDragging = (event: PointerEvent) => {
-    if (!dragging || !stage) return;
+    if (event.pointerType === 'touch' || !dragging || !stage) return;
     dragging = false;
     stage.classList.remove('is-dragging');
     if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
   };
   stage?.addEventListener('pointerup', stopDragging);
   stage?.addEventListener('pointercancel', stopDragging);
+
+  stage?.addEventListener('touchstart', (event) => {
+    if (!stage || !browser?.open) return;
+
+    if (event.touches.length >= 2 && isCurrentImage()) {
+      event.preventDefault();
+      touchMode = 'pinch';
+      pinchStartDistance = Math.max(1, distanceBetweenTouches(event.touches));
+      pinchStartScale = scale;
+      stage.classList.add('is-dragging');
+      return;
+    }
+
+    if (event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    touchStartTime = performance.now();
+    touchOriginX = translateX;
+    touchOriginY = translateY;
+    touchMode = isCurrentImage() && scale > 1.001 ? 'drag' : 'swipe';
+    stage.classList.toggle('is-dragging', touchMode === 'drag');
+  }, { passive: false });
+
+  stage?.addEventListener('touchmove', (event) => {
+    if (!stage) return;
+
+    if (touchMode === 'pinch' && event.touches.length >= 2 && isCurrentImage()) {
+      event.preventDefault();
+      const distance = distanceBetweenTouches(event.touches);
+      setScale(pinchStartScale * (distance / pinchStartDistance));
+      return;
+    }
+
+    if (event.touches.length !== 1) return;
+    const touch = event.touches[0];
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+
+    if (touchMode === 'drag' && isCurrentImage()) {
+      event.preventDefault();
+      translateX = touchOriginX + deltaX;
+      translateY = touchOriginY + deltaY;
+      updateTransform();
+      return;
+    }
+
+    if (touchMode === 'swipe' && Math.abs(deltaX) > Math.abs(deltaY)) {
+      event.preventDefault();
+    }
+  }, { passive: false });
+
+  const finishTouchGesture = (event: TouchEvent) => {
+    if (!stage) return;
+    const completedMode = touchMode;
+
+    if (completedMode === 'pinch') {
+      if (event.touches.length < 2) {
+        touchMode = 'none';
+        stage.classList.remove('is-dragging');
+      }
+      return;
+    }
+
+    if (event.touches.length > 0) return;
+    touchMode = 'none';
+    stage.classList.remove('is-dragging');
+
+    if (completedMode !== 'swipe') return;
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+    const duration = performance.now() - touchStartTime;
+    const swipeThreshold = Math.min(88, Math.max(48, stage.clientWidth * 0.14));
+    const isHorizontalSwipe = Math.abs(deltaX) >= swipeThreshold
+      && Math.abs(deltaX) > Math.abs(deltaY) * 1.2
+      && duration <= 900;
+
+    if (isHorizontalSwipe) navigate(deltaX < 0 ? 1 : -1);
+  };
+
+  stage?.addEventListener('touchend', finishTouchGesture);
+  stage?.addEventListener('touchcancel', (event) => {
+    touchMode = 'none';
+    stage?.classList.remove('is-dragging');
+    finishTouchGesture(event);
+  });
 
   document.addEventListener('keydown', (event) => {
     if (!browser?.open) return;
@@ -279,6 +379,8 @@ const serializedMedia = JSON.stringify(media).replaceAll('<', '\\u003c');
     video?.load();
     image?.removeAttribute('src');
     resetTransform();
+    touchMode = 'none';
+    stage?.classList.remove('is-dragging');
     currentIndex = -1;
     document.body.classList.remove('photo-browser-open');
   });

@@ -103,7 +103,7 @@ pnpm content:manage
 | 视频处理 | FFmpeg | 转换相册视频并生成封面与缩略图 |
 | 媒体分发 | 阿里云 OSS + `oss.996.band` | 用内容哈希路径和 CDN 加速图片 |
 | 本地缓存 | Service Worker | 首次访问后缓存关键图片，并支持版本更新 |
-| 部署 | GitHub Actions + GitHub Pages | `site-v2` 分支通过检查后自动发布 |
+| 部署 | GitHub Actions + GitHub Pages | `master` 分支通过检查后自动发布 |
 
 内容和页面代码分离保存在 `src/content/` 中。图片在内容里仍使用 `/assets/...` 逻辑路径，
 构建时由媒体清单决定使用本地资源还是 `https://oss.996.band`，因此可以随时回退。
@@ -135,11 +135,11 @@ pnpm media:check      # 检查媒体清单与 OSS 状态
 
 ## 发布
 
-GitHub Actions 监听 `site-v2` 分支。内容合并到该分支后会自动执行检查、构建并部署到
+GitHub Actions 监听 `master` 分支。内容合并到该分支后会自动执行检查、构建并部署到
 GitHub Pages。
 
 推荐所有成员通过独立内容分支和 Pull Request 协作，不要多人同时直接修改
-`site-v2`。内容后台只会修改本地文件，不会自动提交、推送或发布。
+`master`。内容后台只会修改本地文件，不会自动提交、推送或发布。
 
 发布前至少运行：
 

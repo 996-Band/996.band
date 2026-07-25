@@ -62,7 +62,8 @@
 - 使用 Astro 7、TypeScript 和纯静态输出。
 - 增加 404 页面、站点地图、robots.txt 和基础 SEO 信息。
 - 使用 GitHub Actions 自动检查、构建并发布 GitHub Pages。
-- 建立 `site-v2` 作为新版开发和发布分支。
+- 建立 `site-v2` 作为新版开发分支，完成后合并至 `master` 主干发布。
+- 合并前将旧版主干完整备份至 `archive/master-before-site-v2`。
 
 ## 2024 — 图片与内容维护
 
